@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class SideMenu extends Component {
   render() {
@@ -6,18 +7,13 @@ class SideMenu extends Component {
       <aside className="sideMenu">
         <div className="menu">
           <ul>
-            <li className="active">
-              <a href="#">همه آگهی ها</a>
-            </li>
-            <li>
-              <a href="#">خودرو</a>
-            </li>
-            <li>
-              <a href="#">استخدام</a>
-            </li>
-            <li>
-              <a href="#">املاک</a>
-            </li>
+            {this.props.items.map(item => {
+              return (
+                <li>
+                  <Link to={'/browse/'+item.slug}>{item.name}</Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </aside>
