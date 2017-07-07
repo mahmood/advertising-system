@@ -1,28 +1,49 @@
-import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import React, {Component} from 'react';
+import {Grid, Card, Icon, Image, Segment} from 'semantic-ui-react';
+import { StickyContainer, Sticky } from 'react-sticky';
 import Header from './common/Header';
+import PandaImage from '../images/panda.jpg';
+import SideMenu from './common/SideMenu';
+import ProductItem from './ProductItem';
 
 class Home extends Component {
+  stickyMenu(style) {
+    style = {...style, top: '10px'};
+    let items = [
+      { name: 'املاک', slug: 'home' },
+      { name: 'خودرو', slug: 'car' },
+      { name: 'لوازم الکترونیکی', slug: 'electric' },
+      { name: 'استخدام', slug: 'employment' }
+    ];
+    return (
+      <div style={style}>
+        <SideMenu items={items} />
+      </div>
+    )
+  }
   render() {
     return (
       <div>
         <Header/>
-        <div className="rtl">
-          <Grid>
-            <Grid.Column computer={3} mobile={10}>
-              salam
-            </Grid.Column>
-            <Grid.Column>
-              salam2
-            </Grid.Column>
-            <Grid.Column>
-              salam3
-            </Grid.Column>
-            <Grid.Column>
-              salam4
-            </Grid.Column>
+        <StickyContainer className="rtl">
+          <Grid container>
+            <Grid.Row>
+              <Grid.Column computer={3}>
+                <Sticky>
+                  {({style}) =>this.stickyMenu(style)}
+                </Sticky>
+              </Grid.Column>
+              <Grid.Column computer={13}>
+                <Grid>
+                  <ProductItem image={PandaImage}/>
+                  <ProductItem image={PandaImage}/>
+                  <ProductItem image={PandaImage}/>
+                  <ProductItem image={PandaImage}/>
+                </Grid>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
-        </div>
+        </StickyContainer>
       </div>
     );
   }

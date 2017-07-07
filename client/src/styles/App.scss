@@ -1,4 +1,6 @@
 $font: 'IRANYekanWeb';
+$black: rgba(0, 0, 0, 0.87);
+$grey: #D4D4D5;
 
 body {
   margin: 0;
@@ -63,5 +65,35 @@ a {
 .button {
   &__add {
     background: red;
+  }
+}
+
+.fixed {
+    position: fixed;
+    width: 13%;
+    margin-top: -70px;
+  }
+.sideMenu {
+  ul {
+    margin: 0;
+    padding: 0;
+    .active {
+        background: lighten($grey, 10%);
+      }
+    li {
+      list-style: none;
+      border-bottom: solid 1px $grey;
+      &:last-child{
+        border-bottom: none;
+      }
+      a {
+        padding: 12.5px;
+        color: $black;
+        display: block;
+        &:hover {
+          background: lighten($grey, 10%);
+        }
+      }
+    }
   }
 }
