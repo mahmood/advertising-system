@@ -5,6 +5,10 @@ import React from 'react';
 import express from 'express';
 import path from 'path';
 import { renderToString } from 'react-dom/server';
+import qs from 'qs';
+import { Provider } from 'react-redux';
+import serialize from 'serialize-javascript';
+import configStore from './store/configStore';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -14,11 +18,24 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     const context = {};
+    // Read the counter from the request, if provided
+    const params = qs.parse(req.query);
+    const counter = parseInt(params.counter, 10) || 0;
+    // Compile an initial state
+    const preloadedState = { counter };
+    // Create a new Redux store instance
+    const store = configStore(preloadedState);
+
     const markup = renderToString(
       <StaticRouter context={context} location={req.url}>
-        <App />
+        <Provider store={store}>
+          <App />          
+        </Provider>
       </StaticRouter>
     );
+
+    // Grab the initial state from our Redux store
+    const finalState = store.getState();
 
     if (context.url) {
       res.redirect(context.url);
@@ -37,6 +54,9 @@ server
     <body>
         <div id="root">${markup}</div>
     </body>
+    <script>
+      window.__PRELOADED_STATE__ = ${serialize(finalState)}
+    </script>
 </html>`
       );
     }
