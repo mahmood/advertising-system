@@ -1,0 +1,8 @@
+{
+  "name": "divar",
+  "description": "simple advertisintg system",
+  "version": "0.1",
+  "engines": {
+    "node": "7.0.0"
+  }
+}
