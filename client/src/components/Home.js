@@ -25,7 +25,7 @@ class Home extends Component {
     return (
       <div>
         <Header/>
-        <StickyContainer className="rtl">
+        <StickyContainer className="rtl margin">
           <Grid container>
             <Grid.Row>
               <Grid.Column computer={3}>

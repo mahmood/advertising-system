@@ -7,8 +7,8 @@ class Home extends Component {
     return (
       <div>
         <Header/>
-        <div className="rtl">
-          {this.props.children}        
+        <div className="rtl margin">
+          {this.props.children}
         </div>
       </div>
     );

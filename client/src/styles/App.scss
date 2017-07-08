@@ -13,6 +13,10 @@ body {
   direction: rtl;
 }
 
+.margin {
+  margin-top: 20px;
+}
+
 a, div,.button {
   font-family: $font!important;
 }
@@ -95,5 +99,43 @@ a {
         }
       }
     }
+  }
+}
+.modal {
+  text-align: right!important;
+  direction: rtl;
+}
+
+.form {
+  label {
+    position: relative;
+    bottom: 10px;
+  }
+  .input-align {
+    margin-bottom: 20px;
+  }
+  .half {
+    width: 49%;
+    float: right;
+  }
+  .padd-right {
+    margin-right: 4%!important;
+    .input-align {
+    margin-right: 4%!important;      
+    }
+  }
+  .error {
+    display: block;
+    margin: 5px 0 15px;
+    color: red;
+  }
+  .input {
+    margin-bottom: 20px!important;
+  }
+  .submit__btn {
+    padding: .8rem 3rem!important;
+    font-size: 1.1rem!important;
+    margin-top: 10px;
+    margin-right: 0;
   }
 }
