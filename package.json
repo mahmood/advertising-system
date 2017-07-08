@@ -6,7 +6,7 @@
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "razzle start",
-    "start": "npm rebuild node-sass && npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
@@ -29,6 +29,7 @@
     "validatorjs": "^3.13.3"
   },
   "devDependencies": {
+    "node-sass": "^4.5.3",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.0.2",
     "redux-devtools-extension": "^2.13.2"
