@@ -10,10 +10,10 @@ class Home extends Component {
   stickyMenu(style) {
     style = {...style, top: '10px'};
     let items = [
-      { name: 'املاک', slug: 'home' },
-      { name: 'خودرو', slug: 'car' },
-      { name: 'لوازم الکترونیکی', slug: 'electric' },
-      { name: 'استخدام', slug: 'employment' }
+      { id: 1, name: 'املاک', slug: 'home' },
+      { id: 2, name: 'خودرو', slug: 'car' },
+      { id: 3, name: 'لوازم الکترونیکی', slug: 'electric' },
+      { id: 4, name: 'استخدام', slug: 'employment' }
     ];
     return (
       <div style={style}>
@@ -29,7 +29,7 @@ class Home extends Component {
           <Grid container>
             <Grid.Row>
               <Grid.Column computer={3}>
-                <Sticky>
+               <Sticky>
                   {({style}) =>this.stickyMenu(style)}
                 </Sticky>
               </Grid.Column>

@@ -9,7 +9,7 @@ class SideMenu extends Component {
           <ul>
             {this.props.items.map(item => {
               return (
-                <li>
+                <li key={item.id}>
                   <Link to={'/browse/'+item.slug}>{item.name}</Link>
                 </li>
               );

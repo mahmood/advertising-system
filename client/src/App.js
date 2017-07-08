@@ -5,7 +5,7 @@ import NotFound from './components/common/NotFound';
 import Home from './components/Home'
 import AddAdvertising from './components/AddAdvertising';
 import Browse from './components/Browse';
-import About from './components/About'
+import About from './components/About';
 
 import 'semantic-ui-css/semantic.min.css';
 import './styles/App.css';
@@ -13,9 +13,9 @@ import './styles/App.css';
 const App = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/new" component={AddAdvertising}/>
-    <Route path="/about" component={About}/>
-    <Route path="/browse/:slug" component={Browse}/>
+    <Route path="/new" component={AddAdvertising} />
+    <Route path="/about" component={About} />
+    <Route exact path="/browse/:slug" component={Browse} />
     <Route component={NotFound} />
   </Switch>
 );
