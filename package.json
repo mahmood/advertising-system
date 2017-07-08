@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "razzle start",
     "start": "npm rebuild node-sass && npm-run-all -p watch-css start-js",
     "build": "npm run build-css && razzle build",
