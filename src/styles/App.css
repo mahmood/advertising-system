@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "IRANYekanWeb";
+  background: #fff; }
+
+.rtl {
+  direction: rtl; }
+
+.margin {
+  margin-top: 20px; }
+
+a, div, .button {
+  font-family: "IRANYekanWeb" !important; }
+
+a {
+  color: white; }
+  a ::hover {
+    color: white; }
+
+.no-radius {
+  border-radius: 0px !important; }
+
+.ui.massive.menu {
+  direction: rtl; }
+
+.ui .menu .ui.dropdown i.dropdown.icon {
+  float: left;
+  margin: 0 1rem 0 0; }
+
+.ui .menu .ui.dropdown .menu {
+  text-align: right;
+  right: 0;
+  min-width: calc(100% + 30px); }
+  .ui .menu .ui.dropdown .menu .item {
+    text-align: right; }
+
+.logo {
+  text-align: center;
+  padding: 0 25px;
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold; }
+  .logo a {
+    color: rgba(0, 0, 0, 0.87); }
+
+.button__add {
+  background: red; }
+
+.fixed {
+  position: fixed;
+  width: 13%;
+  margin-top: -70px; }
+
+.sideMenu ul {
+  margin: 0;
+  padding: 0; }
+  .sideMenu ul .active {
+    background: #eeeeee; }
+  .sideMenu ul li {
+    list-style: none;
+    border-bottom: solid 1px #D4D4D5; }
+    .sideMenu ul li:last-child {
+      border-bottom: none; }
+    .sideMenu ul li a {
+      padding: 12.5px;
+      color: rgba(0, 0, 0, 0.87);
+      display: block; }
+      .sideMenu ul li a:hover {
+        background: #eeeeee; }
+
+.modal {
+  text-align: right !important;
+  direction: rtl; }
+
+.form label {
+  position: relative;
+  bottom: 10px; }
+
+.form .input-align {
+  margin-bottom: 20px; }
+
+.form .half {
+  width: 49%;
+  float: right; }
+
+.form .padd-right {
+  margin-right: 4% !important; }
+  .form .padd-right .input-align {
+    margin-right: 4% !important; }
+
+.form .error {
+  display: block;
+  margin: 5px 0 15px;
+  color: red; }
+
+.form .input {
+  margin-bottom: 20px !important; }
+
+.form .submit__btn {
+  padding: 0.8rem 3rem !important;
+  font-size: 1.1rem !important;
+  margin-top: 10px;
+  margin-right: 0; }
