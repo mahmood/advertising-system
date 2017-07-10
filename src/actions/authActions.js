@@ -46,7 +46,7 @@ export const register = (values) => {
           });
       })
       .catch(error => {
-        dispatch({ type: CREATE_USER_FAILED })
+        dispatch({ type: CREATE_USER_FAILED, error: 'اکانت ساخته نشد.' })
       })
     }
 };

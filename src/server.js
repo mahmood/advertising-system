@@ -21,12 +21,11 @@ server
     const context = {};
     // Read the counter from the request, if provided
     const params  = qs.parse(req.query);
-    const counter = parseInt(params.counter, 10) || 0;
     const cookies = new Cookies(req.headers.cookie || {});
     const loggedIn = cookies.get('jwt') ? true : false;
     const auth = { loggedIn, error: null, data: cookies.get('data') };
     // Compile an initial state
-    const preloadedState = { counter, auth };
+    const preloadedState = { auth };
     // Create a new Redux store instance
     const store = configStore(preloadedState);
 

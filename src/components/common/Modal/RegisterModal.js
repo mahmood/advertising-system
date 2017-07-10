@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NoSSR from 'react-no-ssr';
-import {Header, Modal, Button} from 'semantic-ui-react';
+import {Header, Modal, Button, Message} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
 import Validator from 'validatorjs';
 import * as actions from '../../../actions/authActions';
@@ -44,6 +44,7 @@ class LoginModal extends Component {
           <Modal.Header>عضویت</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
+              {this.props.registerError ? <Message color="red">{this.props.registerError}</Message> : <div></div>}
               <form method="post" onSubmit={this.props.handleSubmit(this.onLoginFormSubmit.bind(this))} className="ui form">
                 <Field half label="نام" name="fname" component={renderField} type="text"/>
                 <Field marginRight half className="padd-right" label="نام خانوادگی" name="lname" component={renderField} type="text"/>
@@ -78,4 +79,11 @@ const form = reduxForm({
   validate
 })(LoginModal);
 
-export default connect(null, actions)(form);
+const mapStateToProps = (state, ownProps) => {
+  console.log(state);
+  return {
+    registerError: state.auth.registerError
+  }
+}
+
+export default connect(mapStateToProps, actions)(form);
