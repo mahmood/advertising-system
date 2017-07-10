@@ -3,11 +3,10 @@ import NoSSR from 'react-no-ssr';
 import {Header, Modal, Button} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
 import Validator from 'validatorjs';
-Validator.useLang('fa');
+import * as actions from '../../../actions/authActions';
+import { connect } from 'react-redux';
 
-function onLoginFormSubmit(values) {
-  alert(`email: ${values.email}, pass: ${values.password}`);
-}
+Validator.useLang('fa');
 
 const renderField = ({
   input,
@@ -30,28 +29,34 @@ const renderField = ({
   </div>
 )
 
-const LoginModal = (props) => {
-  return (
-    <NoSSR>
-      <Modal
-        size="small"
-        dimmer="blurring"
-        trigger={<a className = "item" > عضویت </a>}>
-        <Modal.Header>عضویت</Modal.Header>
-        <Modal.Content image>
-          <Modal.Description>
-            <form method="post" onSubmit={props.handleSubmit(onLoginFormSubmit)} className="ui form">
-              <Field half label="نام" name="fname" component={renderField} type="text"/>
-              <Field marginRight half className="padd-right" label="نام خانوادگی" name="lname" component={renderField} type="text"/>
-              <Field label="ایمیل" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
-              <Field label="رمز عبور" name="password" component={renderField} type="password" />
-              <Button disabled={!props.valid} type="submit" className="submit__btn" positive>ثبت نام</Button>
-            </form>
-          </Modal.Description>
-        </Modal.Content>
-      </Modal>
-    </NoSSR>
-  )
+class LoginModal extends Component {
+  onLoginFormSubmit({email, fname, lname, password}) {
+    console.log(this.props);    
+    this.props.register({email, fname, lname, password});
+  }
+  render() {
+    return (
+      <NoSSR>
+        <Modal
+          size="small"
+          dimmer="blurring"
+          trigger={<a className = "item" > عضویت </a>}>
+          <Modal.Header>عضویت</Modal.Header>
+          <Modal.Content image>
+            <Modal.Description>
+              <form method="post" onSubmit={this.props.handleSubmit(this.onLoginFormSubmit.bind(this))} className="ui form">
+                <Field half label="نام" name="fname" component={renderField} type="text"/>
+                <Field marginRight half className="padd-right" label="نام خانوادگی" name="lname" component={renderField} type="text"/>
+                <Field label="ایمیل" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
+                <Field label="رمز عبور" name="password" component={renderField} type="password" />
+                <Button disabled={!this.props.valid} type="submit" className="submit__btn" positive>ثبت نام</Button>
+              </form>
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
+      </NoSSR>
+    )
+  }
 };
 
 const validate = values => {
@@ -68,7 +73,9 @@ const validate = values => {
   return validator.errors.all();
 };
 
-export default reduxForm({
+const form = reduxForm({
   form: 'login',
   validate
 })(LoginModal);
+
+export default connect(null, actions)(form);

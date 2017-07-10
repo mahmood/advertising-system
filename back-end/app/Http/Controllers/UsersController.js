@@ -15,14 +15,14 @@ class UsersController {
         user
       });
     } catch(e) {
-      response.unauthorized('Invalid credentails')
+      response.unauthorized({msg: 'اطلاعات وارد شده صحیح نمی باشد.'});
     }
   }
 
   * register(request, response) {
     const data = request.only('username', 'password', 'fname', 'lname', 'email');
     yield User.create(data);
-    response.send({ msg: 'user created successfully' });
+    response.json({ msg: 'کاربر با موقیت ساخته شد.' });
     return;
   }
 

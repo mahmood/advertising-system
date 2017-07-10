@@ -73,6 +73,9 @@ a {
   text-align: right !important;
   direction: rtl; }
 
+.inline-login {
+  display: flex; }
+
 .form label {
   position: relative;
   bottom: 10px; }

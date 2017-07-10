@@ -9,6 +9,7 @@ import qs from 'qs';
 import { Provider } from 'react-redux';
 import serialize from 'serialize-javascript';
 import configStore from './store/configStore';
+import Cookies from 'universal-cookie';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -19,10 +20,13 @@ server
   .get('/*', (req, res) => {
     const context = {};
     // Read the counter from the request, if provided
-    const params = qs.parse(req.query);
+    const params  = qs.parse(req.query);
     const counter = parseInt(params.counter, 10) || 0;
+    const cookies = new Cookies(req.headers.cookie || {});
+    const loggedIn = cookies.get('jwt') ? true : false;
+    const auth = { loggedIn, error: null, data: cookies.get('data') };
     // Compile an initial state
-    const preloadedState = { counter };
+    const preloadedState = { counter, auth };
     // Create a new Redux store instance
     const store = configStore(preloadedState);
 
