@@ -125,6 +125,9 @@ a ::hover {
   border-radius: .28571429rem;
   padding: 10px; }
 
+.product {
+  min-height: 430px !important; }
+
 .product .product__image {
   width: 100%;
   height: 200px; }

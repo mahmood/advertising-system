@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Card, Image, Icon, Grid} from 'semantic-ui-react';
 import { PersianNumber } from 'react-persian';
+import moment from 'moment';
+moment.locale('fa');
 
 class ProductItem extends Component {
   renderPrice(price, type) {
@@ -23,11 +25,11 @@ class ProductItem extends Component {
           </Card.Header>
           <Card.Meta>
             <span className='date'>
-              ارسال شده ۵ دقیقه پیش
+              {moment(this.props.created_at, "YYYY-MM-DD h:m:s").fromNow()}
             </span>
           </Card.Meta>
           <Card.Description>
-            {this.props.description}
+            {this.props.description.slice(0, 180)}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
