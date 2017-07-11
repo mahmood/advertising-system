@@ -2,7 +2,7 @@ import { AUTH_USER, LOGOUT, CREATE_USER_SUCCESS, CREATE_USER_FAILED } from './ac
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
-const ROOT_URL = 'http://localhost:3333';
+const ROOT_URL = 'http://localhost:3333/api/v1';
 
 export const signIn = (values) => {
   return dispatch => {

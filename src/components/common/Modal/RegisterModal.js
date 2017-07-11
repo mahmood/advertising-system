@@ -39,7 +39,6 @@ class LoginModal extends Component {
       <NoSSR>
         <Modal
           size="small"
-          dimmer="blurring"
           trigger={<a className = "item" > عضویت </a>}>
           <Modal.Header>عضویت</Modal.Header>
           <Modal.Content image>
@@ -50,7 +49,7 @@ class LoginModal extends Component {
                 <Field marginRight half className="padd-right" label="نام خانوادگی" name="lname" component={renderField} type="text"/>
                 <Field label="ایمیل" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
                 <Field label="رمز عبور" name="password" component={renderField} type="password" />
-                <Button disabled={!this.props.valid} type="submit" className="submit__btn" positive>ثبت نام</Button>
+                <Button disabled={this.props.pristine || this.props.submiting} type="submit" className="submit__btn" positive>ثبت نام</Button>
               </form>
             </Modal.Description>
           </Modal.Content>
@@ -75,12 +74,11 @@ const validate = values => {
 };
 
 const form = reduxForm({
-  form: 'login',
+  form: 'register',
   validate
 })(LoginModal);
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     registerError: state.auth.registerError
   }

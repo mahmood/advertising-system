@@ -33,7 +33,6 @@ class LoginModal extends Component {
       <NoSSR>
         <Modal
           size="small"
-          dimmer="blurring"
           trigger={<a className = "item" > ورود </a>}>
           <Modal.Header>ورود</Modal.Header>
           <Modal.Content image>
@@ -44,7 +43,7 @@ class LoginModal extends Component {
                 <Field className="input" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
                 <label htmlFor="password">رمز عبور</label>
                 <Field className="input" name="password" component={renderField} type="password" />
-                <Button disabled={!this.props.valid} type="submit" className="submit__btn" positive>ورود</Button>
+                <Button disabled={this.props.pristine || this.props.submiting} type="submit" className="submit__btn" positive>ورود</Button>
               </form>
             </Modal.Description>
           </Modal.Content>

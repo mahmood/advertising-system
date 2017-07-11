@@ -19,6 +19,8 @@ const Route = use('Route');
 
 Route.on('/').render('welcome');
 
-Route.get('profile', 'UsersController.profile');
-Route.post('login', 'UsersController.login');
-Route.post('register', 'UsersController.register');
+Route.group('v1', () => {
+  Route.get('profile', 'UsersController.profile');
+  Route.post('login', 'UsersController.login');
+  Route.post('register', 'UsersController.register');
+}).prefix('api/v1');
