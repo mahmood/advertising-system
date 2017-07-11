@@ -34,7 +34,7 @@ class Home extends Component {
             <Grid.Row>
               <Grid.Column computer={3}>
                <Sticky>
-                  {({style}) =>this.stickyMenu(style)}
+                  {({style}) => this.stickyMenu(style)}
                 </Sticky>
               </Grid.Column>
               <Grid.Column computer={13}>

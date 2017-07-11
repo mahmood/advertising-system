@@ -6,15 +6,16 @@ const ROOT_URL = 'http://localhost:3333/api/v1';
 
 export const signIn = (values) => {
   return dispatch => {
+    dispatch({ type: AUTH_USER, loggedIn: false, isLoading: true, data: null, error: null });
     axios.post(`${ROOT_URL}/login`, values)
       .then(response => {
-        dispatch({ type: AUTH_USER, loggedIn: true, data: response.data.user, error: null });
+        dispatch({ type: AUTH_USER, loggedIn: true, isLoading: false, data: response.data.user, error: null });
         const cookies = new Cookies();
         cookies.set('jwt', response.data.token, { path: '/' });
         cookies.set('data', response.data.user, { path: '/' });
       })
       .catch(error => {
-        dispatch({ type: AUTH_USER, loggedIn: false, data: null, error: error.response.data.msg });
+        dispatch({ type: AUTH_USER, loggedIn: false, isLoading: false, data: null, error: error.response.data.msg });
       });
   }
 };
@@ -31,9 +32,10 @@ export const logOut = () => {
 export const register = (values) => {
   return dispatch => {
     values = {...values, username: values.email};
+    dispatch({ type: CREATE_USER_SUCCESS, isLoading: true });
     axios.post(`${ROOT_URL}/register`, values)
       .then(response => {
-        dispatch({ type: CREATE_USER_SUCCESS });
+        dispatch({ type: CREATE_USER_SUCCESS, isLoading: false });
         axios.post(`${ROOT_URL}/login`, values)
           .then(response => {
             dispatch({ type: AUTH_USER, loggedIn: true, data: response.data.user, error: null });

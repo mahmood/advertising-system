@@ -49,7 +49,7 @@ class LoginModal extends Component {
                 <Field marginRight half className="padd-right" label="نام خانوادگی" name="lname" component={renderField} type="text"/>
                 <Field label="ایمیل" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
                 <Field label="رمز عبور" name="password" component={renderField} type="password" />
-                <Button disabled={this.props.pristine || this.props.submiting} type="submit" className="submit__btn" positive>ثبت نام</Button>
+                <Button loading={this.props.isLoading} disabled={this.props.pristine || this.props.submiting} type="submit" className="submit__btn" positive>ثبت نام</Button>
               </form>
             </Modal.Description>
           </Modal.Content>
@@ -80,7 +80,8 @@ const form = reduxForm({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    registerError: state.auth.registerError
+    registerError: state.auth.registerError,
+    isLoading: state.auth.isLoading
   }
 }
 
