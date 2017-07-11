@@ -21,6 +21,11 @@ a, div,.button {
   font-family: $font!important;
 }
 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font;
+}
+
 a {
   color: white;
   ::hover{
@@ -142,4 +147,11 @@ a {
     margin-top: 10px;
     margin-right: 0;
   }
+}
+.upload {
+  width: 100%;
+  min-height: 170px;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: .28571429rem;
+  padding: 10px;
 }

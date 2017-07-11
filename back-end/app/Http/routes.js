@@ -23,4 +23,6 @@ Route.group('v1', () => {
   Route.get('profile', 'UsersController.profile');
   Route.post('login', 'UsersController.login');
   Route.post('register', 'UsersController.register');
+
+  Route.resource('product', 'ProductController');
 }).prefix('api/v1');
