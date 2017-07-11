@@ -5,6 +5,7 @@ import Header from './common/Header';
 import PandaImage from '../images/panda.jpg';
 import SideMenu from './common/SideMenu';
 import ProductItem from './ProductItem';
+import {Helmet} from 'react-helmet';
 
 class Home extends Component {
   stickyMenu(style) {
@@ -24,6 +25,9 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <title>دیوار - خانه</title>
+        </Helmet>
         <Header/>
         <StickyContainer className="rtl margin">
           <Grid container>
