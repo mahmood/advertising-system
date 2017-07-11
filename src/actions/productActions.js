@@ -1,12 +1,9 @@
-import { ADD_PRODUCT } from './actionTypes';
+import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED } from './actionTypes';
 import axios from 'axios';
 
 const ROOT_URL = 'http://localhost:3333/api/v1';
-// const config = {
-//             headers: { 'content-type': 'multipart/form-data' }
-//         }
+
 export const addProduct = data => {
-  console.log('action', data);
   const newData = new FormData();
   data.images.map((image, i) => newData.append('photo', data.images[i]));
   newData.append('name', data.name);
@@ -25,3 +22,16 @@ export const addProduct = data => {
       });
   };
 };
+
+export const fetchProducts = () => {
+  return dispatch => {
+    dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: true });    
+    axios.get(`${ROOT_URL}/product`)
+      .then(response => {
+        dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
+      })
+  }
+}

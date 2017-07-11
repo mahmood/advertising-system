@@ -1,15 +1,25 @@
 import React, {Component} from 'react';
 import {Card, Image, Icon, Grid} from 'semantic-ui-react';
+import { PersianNumber } from 'react-persian';
 
 class ProductItem extends Component {
+  renderPrice(price, type) {
+    if(price && type == 'normal') {
+      return `قیمت : ${price} تومان`;
+    }else if(type == 'free') {
+      return 'رایگان';
+    }else if(type == 'adaptive') {
+      return 'توافقی'
+    }
+  }
   render() {
     return (
       <Grid.Column computer={4}>
-      <Card>
-        <Image src={this.props.image}/>
+      <Card className="product">
+        <Image className="product__image" src={`http://localhost:3333/uploads/${this.props.image}`}/>
         <Card.Content>
           <Card.Header>
-            پاندا
+            {this.props.name}
           </Card.Header>
           <Card.Meta>
             <span className='date'>
@@ -17,13 +27,13 @@ class ProductItem extends Component {
             </span>
           </Card.Meta>
           <Card.Description>
-            در حد نو فقط سه بار چپ کرده بیمه تا برج ۱۲ فنی سالم
+            {this.props.description}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <a>
             <Icon name='money'/>
-            قیمت : ۳۰میلیون
+            <PersianNumber>{this.renderPrice(this.props.price, this.props.price_type)}</PersianNumber>
           </a>
         </Card.Content>
       </Card>

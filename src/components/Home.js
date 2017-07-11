@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Grid, Card, Icon, Image, Segment} from 'semantic-ui-react';
+import { Grid, Card, Icon, Image, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import { StickyContainer, Sticky } from 'react-sticky';
 import Header from './common/Header';
-import PandaImage from '../images/panda.jpg';
 import SideMenu from './common/SideMenu';
 import ProductItem from './ProductItem';
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import * as actions from '../actions/productActions';
 
 class Home extends Component {
   stickyMenu(style) {
@@ -21,6 +22,9 @@ class Home extends Component {
         <SideMenu items={items} />
       </div>
     )
+  }
+  componentDidMount() {
+    this.props.fetchProducts();
   }
   render() {
     return (
@@ -39,10 +43,10 @@ class Home extends Component {
               </Grid.Column>
               <Grid.Column computer={13}>
                 <Grid>
-                  <ProductItem image={PandaImage}/>
-                  <ProductItem image={PandaImage}/>
-                  <ProductItem image={PandaImage}/>
-                  <ProductItem image={PandaImage}/>
+                  <Dimmer active={this.props.isLoading} inverted>
+                    <Loader size="large" inverted content='درحال بارگذاری' />
+                  </Dimmer>
+                  {this.props.products && this.props.products.map(product => <ProductItem key={product.id} {...product}/>)}
                 </Grid>
               </Grid.Column>
             </Grid.Row>
@@ -53,4 +57,11 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    products: state.product.data,
+    isLoading: state.product.isLoading
+  }
+}
+
+export default connect(mapStateToProps, actions)(Home);

@@ -4560,6 +4560,12 @@ react-no-ssr@^1.1.0:
   dependencies:
     babel-runtime "6.x.x"
 
+react-persian@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-persian/-/react-persian-1.1.1.tgz#63053ec19eb0f0c1f0d4337be63b39ae3694fb21"
+  dependencies:
+    react ">=0.13.0"
+
 react-redux@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.5.tgz#f8e8c7b239422576e52d6b7db06439469be9846a"
@@ -4607,7 +4613,7 @@ react-sticky@^6.0.1:
     prop-types "^15.5.8"
     raf "^3.3.0"
 
-react@^15.6.1:
+react@>=0.13.0, react@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
   dependencies:

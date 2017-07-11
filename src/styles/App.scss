@@ -130,7 +130,7 @@ a {
   .padd-right {
     margin-right: 4%!important;
     .input-align {
-    margin-right: 4%!important;      
+    margin-right: 4%!important;
     }
   }
   .error {
@@ -154,4 +154,11 @@ a {
   border: 1px solid rgba(34,36,38,.15);
   border-radius: .28571429rem;
   padding: 10px;
+}
+
+.product {
+  .product__image {
+    width: 100%;
+    height: 200px;
+  }
 }
