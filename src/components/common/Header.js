@@ -19,23 +19,28 @@ class HeaderComponent extends Component {
   render() {
     const { activeItem } = this.state;
     const userInfo = (fname, lname) => (
-      <Dropdown item text={fname}>
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={this.handleLogoutClick.bind(this)}>خروج</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+      <Menu.Menu position="left">
+        <Dropdown item text={fname}>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={this.handleLogoutClick.bind(this)}>خروج</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <Menu.Item>
+        <Button color="red"><Link to="/new">+ ثبت رایگان آگهی</Link></Button>
+        </Menu.Item>
+      </Menu.Menu>
     );
+    const add = () => (
+      <Menu.Item>
+        <Link className="ui red button" to="/new">+ ثبت رایگان آگهی</Link>
+      </Menu.Item>
+    )
     return (
       <Menu size='massive' className="no-radius">
         <div className="logo"><Link to="/">دیوار</Link></div>
         <Link className="item" to="/">خانه</Link>
         <Link className="item" to="/about">درباره ما</Link>
-        <Menu.Menu position='left'>
-          {this.props.auth.loggedIn ? userInfo(this.props.auth.data.fname, this.props.auth.data.lname) : <div className="inline-login"><LoginModal /><RegisterModal /></div> }
-          <Menu.Item>
-            <Link className="ui red button" to="/new">+ ثبت رایگان آگهی</Link>
-          </Menu.Item>
-        </Menu.Menu>
+          {this.props.auth.loggedIn ? userInfo(this.props.auth.data.fname, this.props.auth.data.lname) : <Menu.Menu position="left"><div className="inline-login"><LoginModal /><RegisterModal /></div></Menu.Menu> }
       </Menu>
     );
   }

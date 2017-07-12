@@ -6,6 +6,7 @@ import {Field, reduxForm, formValueSelector} from 'redux-form';
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone'
 import Validator from 'validatorjs';
+// import Map from 'google-map-react';
 import * as actions from '../actions/productActions';
 
 Validator.useLang('fa');
@@ -73,7 +74,21 @@ const renderDropzoneInput = (field) => {
   );
 }
 
+const renderMarkers = (map, maps) => {
+  console.log('map', map);
+  console.log('maps', maps);
+  let marker = new maps.Marker({
+    position: {lat: 35.72, lng: 51.29},
+    map,
+    title: 'map'
+  });
+}
+
 class addAdvertising extends Component {
+  static defaultProps = {
+    center: {lat: 35.72, lng: 51.29},
+    zoom: 15
+  };
   onFormSubmit(data) {
     const userId = this.props.userId;
     this.props.addProduct(data, userId);
@@ -84,7 +99,7 @@ class addAdvertising extends Component {
         <Helmet>
           <title>دیوار - افزودن آگهی</title>
         </Helmet>
-        <Grid container>
+        <Grid container className="addProduct">
           <h2>افزودن آگهی</h2>
           <Grid.Row>
           <form method="post" encType='multipart/form-data' onSubmit={this.props.handleSubmit(this.onFormSubmit.bind(this))} className="grid ui form">
@@ -105,10 +120,10 @@ class addAdvertising extends Component {
           </Grid.Column>
 
           <Grid.Column computer={3} mobile={16}>
-          <label htmlFor="price_type">انتخاب کنید</label>
+          <label htmlFor="price_type">نوع فروش</label>
             <Field style={{height: '2.8rem'}} component="select" name="price_type">
-              <option value="" hidden>انتخاب کنید</option>              
-              <option value="adaptive">توافقی</option>            
+              <option value="" hidden>انتخاب کنید</option>
+              <option value="adaptive">توافقی</option>
               <option value="normal">مقطوع</option>
               <option value="free">رایگان</option>
             </Field>
@@ -129,11 +144,18 @@ class addAdvertising extends Component {
             <Field className="input" name="description" component={renderTextarea}/>
           </Grid.Column>
 
-          <Grid.Column computer={16} mobile={16}>
+          {/*<Grid.Column computer={16} mobile={16}>
             <label htmlFor="map">نقشه</label>
-              <div>map</div>
+              <Map
+                style={{ height: '180px' }}
+                defaultCenter={this.props.center}
+                defaultZoom={this.props.zoom}
+                onGoogleApiLoaded={({map, maps}) => renderMarkers(map, maps)}
+                yesIWantToUseGoogleMapApiInternals={true}
+              >
+              </Map>
              <br/>
-          </Grid.Column>
+          </Grid.Column>*/}
               <Button type="submit" className="submit__btn" positive>ثبت آگهی</Button>
             </form>
           </Grid.Row>
