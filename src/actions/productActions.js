@@ -1,5 +1,6 @@
 import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED } from './actionTypes';
 import axios from 'axios';
+import { push } from 'react-router-redux';
 
 const ROOT_URL = 'http://localhost:3333/api/v1';
 
@@ -15,6 +16,7 @@ export const addProduct = data => {
   return dispatch => {
     axios.post(`${ROOT_URL}/product`, newData, { headers: { Authorization: 'Bearer '+localStorage.getItem('token') } })
       .then(response => {
+        dispatch(push('/'));
         console.log(response);
       })
       .catch(error => {

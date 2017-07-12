@@ -97,6 +97,7 @@ class addAdvertising extends Component {
           <Grid.Column computer={3} mobile={16}>
             <label htmlFor="category">دسته بندی</label>
             <Field style={{height: '2.8rem'}} component="select" name="category">
+              <option value="" hidden>انتخاب کنید</option>
               <option value="1">املاک</option>
               <option value="2">خودرو</option>
               <option value="3">لوازم الکترونیکی</option>
@@ -106,6 +107,7 @@ class addAdvertising extends Component {
           <Grid.Column computer={3} mobile={16}>
           <label htmlFor="price_type">انتخاب کنید</label>
             <Field style={{height: '2.8rem'}} component="select" name="price_type">
+              <option value="" hidden>انتخاب کنید</option>              
               <option value="adaptive">توافقی</option>            
               <option value="normal">مقطوع</option>
               <option value="free">رایگان</option>

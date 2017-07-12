@@ -34,7 +34,7 @@ class Browse extends Component {
                 </Sticky>
               </Grid.Column>
               <Grid.Column computer={13}>
-              {this.props.match.params.slug}              
+              {this.props.match.params.slug}
                 <Grid>
                   <ProductItem image={PandaImage}/>
                   <ProductItem image={PandaImage}/>

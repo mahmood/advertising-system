@@ -4,13 +4,20 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configStore from './store/configStore';
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter } from 'react-router-redux';
 
-const store = configStore(window.__PRELOADED_STATE__);
+const history = createHistory();
+
+const store = configStore(window.__PRELOADED_STATE__, history);
+
 
 render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   </BrowserRouter>,
   document.getElementById('root')

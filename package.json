@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "history": "^4.6.3",
     "moment": "^2.18.1",
     "qs": "^6.5.0",
     "razzle": "^0.7.1",
@@ -25,6 +26,7 @@
     "react-persian": "^1.1.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "react-router-redux": "next",
     "react-sticky": "^6.0.1",
     "redux": "^3.7.1",
     "redux-form": "^6.8.0",
