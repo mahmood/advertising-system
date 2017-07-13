@@ -7,7 +7,7 @@ class SideMenu extends Component {
       <aside className="sideMenu">
         <div className="menu">
           <ul>
-            {this.props.items.map(item => {
+            {this.props.items && this.props.items.map(item => {
               return (
                 <li key={item.id}>
                   <Link to={'/browse/'+item.slug}>{item.name}</Link>

@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED } from './actionTypes';
+import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED, FETCH_CATEGORIES_SUCCESS } from './actionTypes';
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
@@ -22,8 +22,17 @@ export const addProduct = data => {
       .catch(error => {
         console.log(error.response);
       });
-  };
+    };
 };
+
+export const fetchCategories = () => {
+  return dispatch => {
+    axios.get(`${ROOT_URL}/category`)
+    .then(response => {
+      dispatch({ type: FETCH_CATEGORIES_SUCCESS, cat: response.data.data });
+    })
+  }
+}
 
 export const fetchProducts = () => {
   return dispatch => {
