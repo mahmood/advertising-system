@@ -34,15 +34,25 @@ export const fetchCategories = () => {
   }
 }
 
-export const fetchProducts = () => {
+export const fetchProducts = (catId = null) => {
   return dispatch => {
-    dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: true });    
-    axios.get(`${ROOT_URL}/product`)
+    dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: true });
+    if(catId !== null){
+      axios.get(`${ROOT_URL}/category/${catId}`)
       .then(response => {
-        dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data });
+        dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data.products });
       })
       .catch(error => {
         dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
-      })
+      });
+    }else {
+      axios.get(`${ROOT_URL}/product`)
+        .then(response => {
+          dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data });
+        })
+        .catch(error => {
+          dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
+        });
+    }
   }
 }

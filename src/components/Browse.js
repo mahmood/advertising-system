@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import Layout from '../components/layouts/Home';
 import { StickyContainer, Sticky } from 'react-sticky';
-import {Grid, Card, Icon, Image, Segment} from 'semantic-ui-react';
+import {Grid, Card, Icon, Image, Segment, Dimmer, Loader} from 'semantic-ui-react';
 import PandaImage from '../images/panda.jpg';
 import SideMenu from './common/SideMenu';
 import ProductItem from './ProductItem';
+import { connect } from 'react-redux';
+import * as actions from '../actions/productActions';
 
 class Browse extends Component {
   stickyMenu(style) {
     style = {...style, top: '10px'};
-    let items = [
-      { id: 1, name: 'املاک', slug: 'home' },
-      { id: 2, name: 'خودرو', slug: 'car' },
-      { id: 3, name: 'لوازم الکترونیکی', slug: 'electric' },
-      { id: 4, name: 'استخدام', slug: 'employment' }
-    ];
     return (
       <div style={style}>
-        <SideMenu items={items} />
+        <SideMenu items={this.props.categories} />
       </div>
     )
+  }
+  componentDidMount() {
+    this.props.fetchProducts(this.props.match.params.id);
+    this.props.fetchCategories();
+  }
+  // when url changed we dispatch action again to receive new data
+  componentWillReceiveProps(nextProps) {
+    if(this.props.match.url !== nextProps.match.url){
+      this.props.fetchProducts(nextProps.match.params.id)
+    }
   }
   render() {
     return (
@@ -35,12 +41,12 @@ class Browse extends Component {
               </Grid.Column>
               <Grid.Column computer={13}>
               {this.props.match.params.slug}
-                <Grid>
-                  <ProductItem image={PandaImage}/>
-                  <ProductItem image={PandaImage}/>
-                  <ProductItem image={PandaImage}/>
-                  <ProductItem image={PandaImage}/>
-                </Grid>
+              <Grid>
+                <Dimmer active={this.props.isLoading} inverted>
+                  <Loader size="large" inverted content='درحال بارگذاری' />
+                </Dimmer>
+                {this.props.products && this.props.products.map(product => <ProductItem key={product.id} {...product}/>)}
+              </Grid>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -52,4 +58,12 @@ class Browse extends Component {
   }
 }
 
-export default Browse;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    products: state.product.data,
+    isLoading: state.product.isLoading,
+    categories: state.product.cat
+  }
+}
+
+export default connect(mapStateToProps, actions)(Browse);

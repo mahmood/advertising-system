@@ -10,7 +10,7 @@ class SideMenu extends Component {
             {this.props.items && this.props.items.map(item => {
               return (
                 <li key={item.id}>
-                  <Link to={'/browse/'+item.slug}>{item.name}</Link>
+                  <Link to={`/browse/${item.slug}/${item.id}`}>{item.name}</Link>
                 </li>
               );
             })}

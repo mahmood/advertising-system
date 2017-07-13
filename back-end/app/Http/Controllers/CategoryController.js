@@ -18,6 +18,7 @@ class CategoryController {
 
   * show (request, response) {
     const { id } = request.params();
+    // const id = request.input('id');
 
     const products = yield Product.query().where('category', id).fetch();
     response.json({ products });
