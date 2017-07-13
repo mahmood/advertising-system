@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED, FETCH_CATEGORIES_SUCCESS } from './actionTypes';
+import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED, FETCH_CATEGORIES_SUCCESS, SEARCH } from './actionTypes';
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
@@ -54,5 +54,17 @@ export const fetchProducts = (catId = null) => {
           dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
         });
     }
+  }
+}
+
+export const searchProduct = term => {
+  return dispatch => {
+    axios.get(`${ROOT_URL}/product/search?term=${term}`)
+      .then(response => {
+        dispatch({ type: SEARCH, data: response.data });
+      })
+      .catch(error => {
+
+      }); 
   }
 }

@@ -172,3 +172,45 @@ a {
     margin-top: 2rem;
   }
 }
+
+input, textarea {
+  font-family: $font!important;
+}
+
+.search{
+  background: lighten($grey, 15%);
+  border-radius: 3px;
+  margin-bottom: 1.5rem;
+  border: solid 1px $grey;
+  padding: .8rem;
+  button {
+    font-weight: normal!important;
+    float: left;
+    margin-top: 10px!important;
+  }
+  .half {
+    width: 49%!important;
+    float: right;
+  }
+  .pad {
+    margin-right: 2%;
+    height: 2.7rem!important;
+  }
+  &::after {
+    display: block;
+    content: "";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.not-found {
+  text-align: center;
+  margin: 5rem auto;
+  i {
+    font-size: 3rem;
+  }
+  font-size: 1rem;
+}

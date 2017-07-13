@@ -40,6 +40,13 @@ class ProductController {
     yield Product.create(data);
     response.json({ msg: 'post created Successfully', path: 'uploads/'+images.uploadName() });
   }
+
+  * search (request, response) {
+    const term = request.input('term');
+
+    const products = yield Product.query().where('name', 'LIKE', `%${term}%`);
+    response.json(products);
+  }
 }
 
 module.exports = ProductController

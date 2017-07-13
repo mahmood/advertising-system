@@ -137,3 +137,42 @@ a ::hover {
 
 .addProduct h2 {
   margin-top: 2rem; }
+
+input, textarea {
+  font-family: "IRANYekanWeb" !important; }
+
+.search {
+  background: #fbfbfb;
+  border-radius: 3px;
+  margin-bottom: 1.5rem;
+  border: solid 1px #D4D4D5;
+  padding: .8rem; }
+
+.search button {
+  font-weight: normal !important;
+  float: left;
+  margin-top: 10px !important; }
+
+.search .half {
+  width: 49% !important;
+  float: right; }
+
+.search .pad {
+  margin-right: 2%;
+  height: 2.7rem !important; }
+
+.search::after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden; }
+
+.not-found {
+  text-align: center;
+  margin: 5rem auto;
+  font-size: 1rem; }
+
+.not-found i {
+  font-size: 3rem; }

@@ -5,6 +5,7 @@ import Header from './common/Header';
 import SideMenu from './common/SideMenu';
 import ProductItem from './ProductItem';
 import { Helmet } from 'react-helmet';
+import SearchField from './common/SearchField';
 import { connect } from 'react-redux';
 import * as actions from '../actions/productActions';
 
@@ -37,11 +38,13 @@ class Home extends Component {
                 </Sticky>
               </Grid.Column>
               <Grid.Column computer={13}>
+              <SearchField categories={this.props.categories} />
                 <Grid>
                   <Dimmer active={this.props.isLoading} inverted>
                     <Loader size="large" inverted content='درحال بارگذاری' />
                   </Dimmer>
                   {this.props.products && this.props.products.map(product => <ProductItem key={product.id} {...product}/>)}
+                  {this.props.isLoading == false && this.props.products.length == 0 && <div className="not-found"><div><Icon name="frown" size="massive"/></div> یافت نشد.</div>}
                 </Grid>
               </Grid.Column>
             </Grid.Row>

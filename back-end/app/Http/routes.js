@@ -24,6 +24,7 @@ Route.group('v1', () => {
   Route.post('login', 'UsersController.login');
   Route.post('register', 'UsersController.register');
 
+  Route.get('product/search', 'ProductController.search');
   Route.resource('product', 'ProductController');
   Route.resource('category', 'CategoryController');
 }).prefix('api/v1');
