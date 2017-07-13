@@ -21,7 +21,8 @@ class CategoryController {
     // const id = request.input('id');
 
     const products = yield Product.query().where('category', id).fetch();
-    response.json({ products });
+    const currentCat = yield Category.query().where('id', id).select('id', 'name', 'slug').fetch();
+    response.json({ products, currentCat });
   }
 
   * destroy (request, response) {

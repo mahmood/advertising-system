@@ -6,7 +6,7 @@ const initialState = { data: null, cat: null, error: null };
 export default (state = initialState, action) => {
   switch(action.type) {
     case FETCH_PHOTO_SUCCESS:
-      return Object.assign({}, state, { isLoading: action.isLoading , data: action.data });
+      return Object.assign({}, state, { isLoading: action.isLoading , data: action.data, currentCat: action.currentCat });
     case FETCH_CATEGORIES_SUCCESS:
       return Object.assign({}, state, { cat: action.cat });
     default:

@@ -40,7 +40,7 @@ class Browse extends Component {
                 </Sticky>
               </Grid.Column>
               <Grid.Column computer={13}>
-              {this.props.match.params.slug}
+              {this.props.currentCat && this.props.currentCat[0].name}
               <Grid>
                 <Dimmer active={this.props.isLoading} inverted>
                   <Loader size="large" inverted content='درحال بارگذاری' />
@@ -62,7 +62,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     products: state.product.data,
     isLoading: state.product.isLoading,
-    categories: state.product.cat
+    categories: state.product.cat,
+    currentCat: state.product.currentCat
   }
 }
 

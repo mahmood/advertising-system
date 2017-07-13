@@ -40,7 +40,7 @@ export const fetchProducts = (catId = null) => {
     if(catId !== null){
       axios.get(`${ROOT_URL}/category/${catId}`)
       .then(response => {
-        dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data.products });
+        dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data.products, currentCat: response.data.currentCat });
       })
       .catch(error => {
         dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
