@@ -10,6 +10,13 @@ class ProductController {
     response.json(products);
   }
 
+  * destroy (request, response) {
+    const params = request.params('id');
+    const product1 = yield Product.findBy('id', params.id);
+    yield product1.delete();
+    response.json({ msg: 'product deleted successfully!' });
+  }
+
   * store (request, response) {
     let data = request.all();
 

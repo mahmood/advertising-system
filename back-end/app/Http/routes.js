@@ -25,4 +25,5 @@ Route.group('v1', () => {
   Route.post('register', 'UsersController.register');
 
   Route.resource('product', 'ProductController');
+  Route.resource('category', 'CategoryController');
 }).prefix('api/v1');

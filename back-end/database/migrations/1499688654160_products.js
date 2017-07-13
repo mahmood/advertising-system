@@ -6,14 +6,14 @@ class ProductsTableSchema extends Schema {
 
   up () {
     this.create('products', table => {
-      table.increments()
+      table.increments().primary()
       table.string('name')
-      table.string('category')
+      table.integer('category', 10)
       table.text('description')
       table.integer('price').Nullable
       table.string('price_type')
       table.string('image')
-      table.integer('user_id')
+      table.integer('user_id').unsigned().references('id').inTable('users')
       table.timestamps()
     })
   }

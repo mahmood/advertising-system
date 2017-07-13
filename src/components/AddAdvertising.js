@@ -6,7 +6,7 @@ import {Field, reduxForm, formValueSelector} from 'redux-form';
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone'
 import Validator from 'validatorjs';
-// import Map from 'google-map-react';
+import axios from 'axios';
 import * as actions from '../actions/productActions';
 
 Validator.useLang('fa');
@@ -73,25 +73,18 @@ const renderDropzoneInput = (field) => {
     </div>
   );
 }
-
-const renderMarkers = (map, maps) => {
-  console.log('map', map);
-  console.log('maps', maps);
-  let marker = new maps.Marker({
-    position: {lat: 35.72, lng: 51.29},
-    map,
-    title: 'map'
-  });
-}
-
 class addAdvertising extends Component {
-  static defaultProps = {
-    center: {lat: 35.72, lng: 51.29},
-    zoom: 15
-  };
+  state = { cat: [] };
   onFormSubmit(data) {
     const userId = this.props.userId;
     this.props.addProduct(data, userId);
+  }
+  componentDidMount() {
+    axios.get(`http://localhost:3333/api/v1/category`)
+      .then(response => {
+        console.log(response);
+        this.setState({ cat: response.data.data });
+      });
   }
   render() {
     return (
@@ -113,9 +106,7 @@ class addAdvertising extends Component {
             <label htmlFor="category">دسته بندی</label>
             <Field style={{height: '2.8rem'}} component="select" name="category">
               <option value="" hidden>انتخاب کنید</option>
-              <option value="1">املاک</option>
-              <option value="2">خودرو</option>
-              <option value="3">لوازم الکترونیکی</option>
+              {this.state.cat.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
             </Field>
           </Grid.Column>
 
