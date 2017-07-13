@@ -1,6 +1,7 @@
 'use strict'
 
 const Category = use('App/Model/Category')
+const Product  = use('App/Model/Product')
 
 class CategoryController {
   * index (request, response) {
@@ -15,10 +16,17 @@ class CategoryController {
     res.json({ msg: 'Category Created Successfully' });
   }
 
-  * destroy (request, response) {
-    const params = request.params('id');
+  * show (request, response) {
+    const { id } = request.params();
 
-    const cat = Category.findBy('id', params.id);
+    const products = yield Product.query().where('category', id).fetch();
+    response.json({ products });
+  }
+
+  * destroy (request, response) {
+    const { id } = request.params();
+
+    const cat = Category.findBy('id', id);
     yield cat.delete();
     response.json({ msg: 'Category Deleted Successfully' });
   }
