@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, FETCH_PHOTO_SUCCESS, FETCH_PHOTO_FAILED, FETCH_CATEGORIES_SUCCESS, SEARCH } from './actionTypes';
+import { ADD_PRODUCT, FETCH_PRODUCT_FAILED, FETCH_PRODUCT_SUCCESS, FETCH_CATEGORIES_SUCCESS, SEARCH } from './actionTypes';
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
@@ -17,7 +17,6 @@ export const addProduct = data => {
     axios.post(`${ROOT_URL}/product`, newData, { headers: { Authorization: 'Bearer '+localStorage.getItem('token') } })
       .then(response => {
         dispatch(push('/'));
-        console.log(response);
       })
       .catch(error => {
         console.log(error.response);
@@ -36,22 +35,22 @@ export const fetchCategories = () => {
 
 export const fetchProducts = (catId = null) => {
   return dispatch => {
-    dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: true });
+    dispatch({ type: FETCH_PRODUCT_SUCCESS, term: null, isLoading: true });
     if(catId !== null){
       axios.get(`${ROOT_URL}/category/${catId}`)
       .then(response => {
-        dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data.products, currentCat: response.data.currentCat });
+        dispatch({ type: FETCH_PRODUCT_SUCCESS, term:null, isLoading: false, data: response.data.products, currentCat: response.data.currentCat });
       })
       .catch(error => {
-        dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
+        dispatch({ type: FETCH_PRODUCT_FAILED, term:null, isLoading: false, error: error.response.msg });
       });
     }else {
       axios.get(`${ROOT_URL}/product`)
         .then(response => {
-          dispatch({ type: FETCH_PHOTO_SUCCESS, isLoading: false, data: response.data });
+          dispatch({ type: FETCH_PRODUCT_SUCCESS,term: null, isLoading: false, data: response.data });
         })
         .catch(error => {
-          dispatch({ type: FETCH_PHOTO_FAILED, isLoading: false, error: error.response.msg });
+          dispatch({ type: FETCH_PRODUCT_FAILED,term:null, isLoading: false, error: error.response.msg });
         });
     }
   }
@@ -61,10 +60,10 @@ export const searchProduct = term => {
   return dispatch => {
     axios.get(`${ROOT_URL}/product/search?term=${term}`)
       .then(response => {
-        dispatch({ type: SEARCH, data: response.data });
+        dispatch({ type: SEARCH, data: response.data, term });
       })
       .catch(error => {
-
-      }); 
+        dispatch({ type: SEARCH, term: null });
+      });
   }
 }

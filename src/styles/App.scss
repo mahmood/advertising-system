@@ -214,3 +214,18 @@ input, textarea {
   }
   font-size: 1rem;
 }
+
+.search_term {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #DB2828;
+    border-radius: 3px;
+    color: #fff;
+    margin-bottom: 1.2rem;
+    i {
+      font-size: 1.2rem!important;
+      position: relative;
+      top: -2px;
+      cursor: pointer;
+    }
+}
