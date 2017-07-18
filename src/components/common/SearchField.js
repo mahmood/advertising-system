@@ -47,8 +47,7 @@ class SearchField extends Component {
 
 const validate = values => {
   const rules = {
-    term: 'required',
-    category: ''
+    term: 'required'
   };
 
   const validator = new Validator(values, rules);

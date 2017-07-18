@@ -4,6 +4,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import {Grid, Card, Icon, Image, Segment, Dimmer, Loader} from 'semantic-ui-react';
 import PandaImage from '../images/panda.jpg';
 import SideMenu from './common/SideMenu';
+import SearchField from './common/SearchField';
 import ProductItem from './ProductItem';
 import { connect } from 'react-redux';
 import * as actions from '../actions/productActions';
@@ -40,7 +41,8 @@ class Browse extends Component {
                 </Sticky>
               </Grid.Column>
               <Grid.Column computer={13}>
-              {this.props.currentCat && this.props.currentCat[0].name}
+              <SearchField categories={this.props.categories} currentCat={this.props.currentCat && this.props.currentCat} />
+              {this.props.currentCat && <span className="search_term">{this.props.currentCat && this.props.currentCat[0].name}</span>}
               <Grid>
                 <Dimmer active={this.props.isLoading} inverted>
                   <Loader size="large" inverted content='درحال بارگذاری' />

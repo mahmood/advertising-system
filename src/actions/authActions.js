@@ -20,6 +20,7 @@ export const signIn = (values) => {
   }
 };
 
+
 export const logOut = () => {
   return dispatch => {
     dispatch({ type: LOGOUT });
