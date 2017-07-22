@@ -54,8 +54,7 @@ class Browse extends Component {
           </Grid>
         </StickyContainer>
       </div>
-
-      </Layout>
+    </Layout>
     );
   }
 }

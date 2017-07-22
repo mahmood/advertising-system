@@ -40,6 +40,7 @@ class HeaderComponent extends Component {
         <div className="logo"><Link to="/">دیوار</Link></div>
         <Link className="item" to="/">خانه</Link>
         <Link className="item" to="/about">درباره ما</Link>
+        <Link className="item" to="/admin">پنل مدیریت</Link>
           {this.props.auth.loggedIn ? userInfo(this.props.auth.data.fname, this.props.auth.data.lname) : <Menu.Menu position="left"><div className="inline-login"><LoginModal /><RegisterModal /></div></Menu.Menu> }
       </Menu>
     );

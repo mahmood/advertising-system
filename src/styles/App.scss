@@ -230,3 +230,66 @@ input, textarea {
       cursor: pointer;
     }
 }
+
+.sidebar {
+  background: #2f2f2f;
+  position: fixed;
+  width: inherit;
+  height: 100%;
+  color: #fff;
+  &__title {
+    background: #0089ff;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 100;
+  }
+  &__category {
+    margin: 15px;
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-top: 1rem;
+    display: block;
+  }
+  &__nav {
+    margin-top: 1rem;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        a {
+          display: block;
+          padding: 1rem .7rem;
+          font-size: 1.1rem;
+          font-weight: 100;
+          color: #b5b5b5;
+          transition: all 0.1s;
+          i {
+            margin-left: .5rem;
+            font-size: 1.3rem!important;
+          }
+          &:hover{
+            background: #1f1f1f;
+          }
+        }
+      }
+    }
+  }
+}
+
+.grid__main {
+  padding: 0 9px!important;
+}
+.main {
+  &__header {
+    border-bottom: solid 1px #ddd;
+    padding: 1.2rem;
+  }
+  &__inner {
+    padding: 1.2rem;
+    .card {
+      width: 273px!important;
+    }
+  }
+}
