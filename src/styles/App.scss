@@ -33,8 +33,12 @@ a {
   }
 }
 
+.table {
+  text-align: right!important;
+}
+
 .no-radius {
-  border-radius: 0px!important;   
+  border-radius: 0px!important;
 }
 
 .ui.massive.menu {
@@ -291,6 +295,21 @@ input, textarea {
     padding: 1.2rem;
     .card {
       width: 273px!important;
+    }
+  }
+}
+
+.product__inner {
+  h2 {
+    margin: 1rem 0 2rem;
+  }
+  .button {
+    margin: 0 0 1rem 0;
+  }
+  td {
+    .button {
+      margin-right: 2.5px;
+      margin-left: 2.5px;
     }
   }
 }

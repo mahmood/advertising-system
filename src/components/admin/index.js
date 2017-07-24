@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import Layout from '../layouts/Admin';
 import { Card } from 'semantic-ui-react';
+import Helmet from 'react-helmet';
 
 class Admin extends Component {
   render() {
     return (
       <Layout>
+        <Helmet>
+          <title>پنل مدیریت - داشبورد</title>
+        </Helmet>
         <Card.Group>
           <Card color="blue">
             <Card.Content>

@@ -2,11 +2,23 @@
 
 const Helpers = use('Helpers')
 const Product = use('App/Model/Product')
+const Database = use('Database')
 
 class ProductController {
 
   * index (request, response) {
-    const products = yield Product.all();
+    // const products = yield Product.all();
+    const products = yield Database.table('products')
+    .innerJoin('categories', 'products.category', 'categories.id')
+    .select('products.id',
+     'products.name as name',
+     'products.description',
+     'products.price',
+     'products.price_type',
+     'products.verified',
+     'products.created_at',
+     'products.image',
+     'categories.name as category')
     response.json(products);
   }
 

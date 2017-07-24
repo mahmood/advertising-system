@@ -10,7 +10,7 @@ class ProductsTableSchema extends Schema {
       table.string('name')
       table.integer('category', 10)
       table.text('description')
-      table.integer('price').Nullable
+      table.string('price').Nullable
       table.string('price_type')
       table.boolean('verified').defaultTo(false);
       table.string('image')
