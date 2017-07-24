@@ -16,8 +16,8 @@ class AdminLayout extends Component {
                 <span className="sidebar__category">عمومی</span>
                 <nav className="sidebar__nav">
                   <ul>
-                    <li><a href="#"><Icon name="dashboard" size="large" /> داشبورد</a></li>
-                    <li><a href="#"><Icon name="block layout" size="large" /> آگهی ها</a></li>
+                    <li><Link to="/admin"><Icon name="dashboard" size="large" /> داشبورد</Link></li>
+                    <li><Link to="/admin/ads"><Icon name="block layout" size="large" /> آگهی ها</Link></li>
                     <li><a href="#"><Icon name="users" size="large" /> کاربران</a></li>
                     <li><a href="#"><Icon name="setting" size="large" /> تنظیمات</a></li>
                     <li><Link to="/"><Icon name="computer" size="large" /> نمایش سایت</Link></li>

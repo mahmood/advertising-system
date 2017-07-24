@@ -7,6 +7,7 @@ import AddAdvertising from './components/AddAdvertising';
 import Browse from './components/Browse';
 import About from './components/About';
 import Admin from './components/admin';
+import Ads from './components/admin/Ads'
 
 import 'semantic-ui-css/semantic.min.css';
 import './styles/App.css';
@@ -17,7 +18,8 @@ const App = () => (
     <Route path="/new" component={AddAdvertising} />
     <Route path="/about" component={About} />
     <Route exact path="/browse/:slug/:id" component={Browse} />
-    <Route path="/admin" component={Admin} />
+    <Route exact path="/admin" component={Admin} />
+    <Route path="/admin/ads" component={Ads} />
     <Route component={NotFound} />
   </Switch>
 );

@@ -82,7 +82,6 @@ class addAdvertising extends Component {
   componentDidMount() {
     axios.get(`http://localhost:3333/api/v1/category`)
       .then(response => {
-        console.log(response);
         this.setState({ cat: response.data.data });
       });
   }

@@ -10,7 +10,8 @@ const initialState = {
   data: null,
   cat: null,
   error: null,
-  term: null
+  term: null,
+  currentCat: null
 };
 
 

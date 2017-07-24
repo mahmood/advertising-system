@@ -12,6 +12,7 @@ class ProductsTableSchema extends Schema {
       table.text('description')
       table.integer('price').Nullable
       table.string('price_type')
+      table.boolean('verified').defaultTo(false);
       table.string('image')
       table.integer('user_id').unsigned().references('id').inTable('users')
       table.timestamps()
