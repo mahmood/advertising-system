@@ -7,7 +7,8 @@ export default (state = initialState, action) => {
     case FETCH_ADMIN_ADS_SUCCESS: 
       return Object.assign({}, state, { data: action.data });
     case DELETE_ADMIN_PRODUCT_SUCCESS:
-      return state.data.filter(product => product.id !== action.id);
+      let newDeleteState = state.data.filter(product => product.id !== action.id);
+      return Object.assign({}, state, { data: newDeleteState });
     case VERIFY_ADMIN_PRODUCT_SUCCESS:
       let newSubState = state.data.map(data => {
         if(data.id !== action.id){

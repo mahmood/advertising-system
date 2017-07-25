@@ -9,6 +9,7 @@ import About from './components/About';
 import Admin from './components/admin';
 import Ads from './components/admin/Ads'
 import AddAds from './components/admin/Ads/AddAds';
+import Authentication from './components/Authentication';
 
 import 'semantic-ui-css/semantic.min.css';
 import './styles/App.css';
@@ -19,9 +20,9 @@ const App = () => (
     <Route path="/new" component={AddAdvertising} />
     <Route path="/about" component={About} />
     <Route exact path="/browse/:slug/:id" component={Browse} />
-    <Route exact path="/admin" component={Admin} />
-    <Route exact path="/admin/ads" component={Ads} />
-    <Route exact path="/admin/ads/add" component={AddAds} />
+    <Route exact path="/admin" component={Authentication(Admin)} />
+    <Route exact path="/admin/ads" component={Authentication(Ads)} />
+    <Route exact path="/admin/ads/add" component={Authentication(AddAds)} />
     <Route component={NotFound} />
   </Switch>
 );
