@@ -1,0 +1,328 @@
+$font: 'IRANYekanWeb';
+$black: rgba(0, 0, 0, 0.87);
+$grey: #D4D4D5;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font;
+  background: #fff;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.margin {
+  margin-top: 20px;
+}
+
+a, div,.button {
+  font-family: $font!important;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font;
+}
+
+a {
+  color: white;
+  ::hover{
+    color: white;
+  }
+}
+
+.table {
+  text-align: right!important;
+}
+
+.no-radius {
+  border-radius: 0px!important;
+}
+
+.ui.massive.menu {
+  direction: rtl;
+}
+
+.ui {
+  .menu {
+    .ui.dropdown {
+      i.dropdown.icon {
+        float: left;
+        margin: 0 1rem 0 0;
+      }
+      .menu {
+        text-align: right;
+        right: 0;
+        min-width: calc(100% + 30px);
+        .item {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  text-align: center;
+  padding: 0 25px;
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  a {
+    color: rgba(0,0,0,.87);
+  }
+}
+
+.button {
+  a:hover {
+    color: white!important;
+  }
+  &__add {
+    background: red;
+  }
+}
+
+.fixed {
+    position: fixed;
+    width: 13%;
+    margin-top: -70px;
+  }
+.sideMenu {
+  ul {
+    margin: 0;
+    padding: 0;
+    .active {
+        background: lighten($grey, 10%);
+      }
+    li {
+      list-style: none;
+      border-bottom: solid 1px $grey;
+      &:last-child{
+        border-bottom: none;
+      }
+      a {
+        padding: 12.5px;
+        color: $black;
+        display: block;
+        &:hover {
+          background: lighten($grey, 10%);
+        }
+      }
+    }
+  }
+}
+.modal {
+  text-align: right!important;
+  direction: rtl;
+}
+
+.inline-login{
+  display: flex;
+}
+
+.form {
+  label {
+    position: relative;
+    bottom: 10px;
+  }
+  .input-align {
+    margin-bottom: 20px;
+  }
+  .half {
+    width: 49%;
+    float: right;
+  }
+  .padd-right {
+    margin-right: 4%!important;
+    .input-align {
+    margin-right: 4%!important;
+    }
+  }
+  .error {
+    display: block;
+    margin: 5px 0 15px;
+    color: red;
+  }
+  .input {
+    margin-bottom: 20px!important;
+  }
+  .submit__btn {
+    padding: .8rem 3rem!important;
+    font-size: 1.1rem!important;
+    margin-top: 10px;
+    margin-right: 0;
+  }
+}
+.upload {
+  width: 100%;
+  min-height: 170px;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: .28571429rem;
+  padding: 10px;
+}
+
+.product {
+  min-height: 430px!important;
+  .product__image {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+.addProduct {
+  h2 {
+    margin-top: 2rem;
+  }
+}
+
+input, textarea {
+  font-family: $font!important;
+}
+
+.search{
+  background: lighten($grey, 15%);
+  border-radius: 3px;
+  margin-bottom: 1.5rem;
+  border: solid 1px $grey;
+  padding: .8rem;
+  button {
+    font-weight: normal!important;
+    float: left;
+    margin-top: 10px!important;
+  }
+  .half {
+    width: 49%!important;
+    float: right;
+  }
+  .pad {
+    margin-right: 2%;
+    height: 2.7rem!important;
+  }
+  &::after {
+    display: block;
+    content: "";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.not-found {
+  text-align: center;
+  margin: 5rem auto;
+  i {
+    font-size: 3rem;
+  }
+  font-size: 1rem;
+}
+
+.search_term {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #DB2828;
+    border-radius: 3px;
+    color: #fff;
+    margin-bottom: 1.2rem;
+    margin-right: 5px;
+    i {
+      font-size: 1.2rem!important;
+      position: relative;
+      top: -2px;
+      cursor: pointer;
+    }
+}
+
+.sidebar {
+  background: #2f2f2f;
+  position: fixed;
+  width: inherit;
+  height: 100%;
+  color: #fff;
+  &__title {
+    background: #0089ff;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 100;
+  }
+  &__category {
+    margin: 15px;
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-top: 1rem;
+    display: block;
+  }
+  &__nav {
+    margin-top: 1rem;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        a {
+          display: block;
+          padding: 1rem .7rem;
+          font-size: 1.1rem;
+          font-weight: 100;
+          color: #b5b5b5;
+          transition: all 0.1s;
+          cursor: pointer;
+          i {
+            margin-left: .5rem;
+            font-size: 1.3rem!important;
+          }
+          &:hover{
+            background: #1f1f1f;
+          }
+        }
+      }
+    }
+  }
+}
+
+.grid__main {
+  padding: 0 9px!important;
+}
+.main {
+  &__header {
+    border-bottom: solid 1px #ddd;
+    padding: 1.2rem;
+  }
+  &__inner {
+    padding: 1.2rem;
+    .card {
+      width: 273px!important;
+    }
+  }
+}
+
+.product__inner {
+  h2 {
+    margin: 1rem 0 2rem;
+  }
+  .button {
+    margin: 0 0 1rem 0;
+  }
+  td {
+    .button {
+      margin-right: 2.5px;
+      margin-left: 2.5px;
+    }
+  }
+}
+
+.addAdvForm {
+  input {
+    width: 30%!important;
+  }
+  select {
+    width: 30%!important;
+    margin-bottom: 20px;
+  }
+  textarea {
+    width: 50%!important;
+  }
+}
