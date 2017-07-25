@@ -65,7 +65,7 @@ class ProductController {
     let ads = yield Product.findBy('id', id)
     ads.verified = 1;
     yield ads.save();
-    response.json({ads, msg: 'با موفقیت تایید شد.'});
+    response.json({ msg: 'با موفقیت تایید شد.' });
   }
 }
 

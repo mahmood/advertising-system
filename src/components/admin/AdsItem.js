@@ -48,17 +48,17 @@ const AdsItem = props => {
           on='click'
           position='top right'
         />
-        <Popup
+        {props.verified !== 1 && <Popup
         trigger={<Button size="small" color="green" animated="vertical">
         <Button.Content hidden>تایید</Button.Content>
         <Button.Content visible>
           <Icon name="check" />
         </Button.Content>
     </Button>}
-        content={<Button color='green' content='تایید آگهی' />}
+        content={<Button onClick={() => props.verifyProduct(props.id)} color='green' content='تایید آگهی' />}
         on='click'
         position='top right'
-      />
+      />}
       </Table.Cell>
     </Table.Row>
   );

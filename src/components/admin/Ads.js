@@ -34,7 +34,7 @@ class Ads extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-            {this.props.ads && this.props.ads.map((ad, index) => <AdsItem key={ad.id} index={index} {...ad} deleteProduct={this.props.deleteProduct}/>)}
+            {this.props.ads && this.props.ads.map((ad, index) => <AdsItem key={ad.id} index={index} {...ad} deleteProduct={this.props.deleteProduct} verifyProduct={this.props.verifyProduct}/>)}
           </Table.Body>
           </Table>
         </section>

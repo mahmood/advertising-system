@@ -27,7 +27,7 @@ export const verifyProduct = id => {
   return dispatch => {
     axios.post(`${ROOT_URL}/product/${id}/verify`)
       .then(response => {
-        dispatch({ type: VERIFY_ADMIN_PRODUCT_SUCCESS });
+        dispatch({ type: VERIFY_ADMIN_PRODUCT_SUCCESS, id });
       })
   };
 };
