@@ -17,10 +17,18 @@ function renderPriceType(type) {
   }
 }
 
+function renderIndex(index) {
+  if(index == 0){
+    return 1;
+  }else {
+    return ++index;
+  }
+}
+
 const AdsItem = props => {
   return (
     <Table.Row>
-      <Table.Cell>۱</Table.Cell>
+      <Table.Cell><PersianNumber>{renderIndex(props.index)}</PersianNumber></Table.Cell>
       <Table.Cell>{props.name}</Table.Cell>
       <Table.Cell>تایید شده</Table.Cell>
       <Table.Cell>{renderPriceType(props.price_type)}</Table.Cell>
