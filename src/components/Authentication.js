@@ -3,17 +3,22 @@ import { connect } from 'react-redux';
 import {withRouter} from "react-router-dom";
 
 // Authenticaton HOC
-export default function(ComposedComponent) {
+export default function(ComposedComponent, allowed) {
   class Authentication extends Component {
     componentWillMount() {
+      console.log(this.props.role);
       if(!this.props.isLogged) {
         //Redirect to homepage
+          this.props.history.push('/');
+      }else if(this.props.role !== allowed) {
         this.props.history.push('/');
       }
     }
     componentWillUpdate(nextProps) {
       if(!nextProps.isLogged) {
         //Redirect to homapage
+          this.props.history.push('/');
+      }else if(this.props.role !== allowed) {
         this.props.history.push('/');
       }
     }
@@ -24,7 +29,8 @@ export default function(ComposedComponent) {
 
   const mapStateToProps = (state, ownProps) => {
     return {
-      isLogged: state.auth.loggedIn
+      isLogged: state.auth.loggedIn,
+      role: state.auth.data.role
     };
   };
   const router = withRouter(Authentication);

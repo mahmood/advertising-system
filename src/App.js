@@ -20,9 +20,9 @@ const App = () => (
     <Route path="/new" component={AddAdvertising} />
     <Route path="/about" component={About} />
     <Route exact path="/browse/:slug/:id" component={Browse} />
-    <Route exact path="/admin" component={Authentication(Admin)} />
-    <Route exact path="/admin/ads" component={Authentication(Ads)} />
-    <Route exact path="/admin/ads/add" component={Authentication(AddAds)} />
+    <Route exact path="/admin" component={Authentication(Admin, 'admin')} />
+    <Route exact path="/admin/ads" component={Authentication(Ads, 'admin')} />
+    <Route exact path="/admin/ads/add" component={Authentication(AddAds, 'admin')} />
     <Route component={NotFound} />
   </Switch>
 );
