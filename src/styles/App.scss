@@ -313,3 +313,16 @@ input, textarea {
     }
   }
 }
+
+.addAdvForm {
+  input {
+    width: 30%!important;
+  }
+  select {
+    width: 30%!important;
+    margin-bottom: 20px;
+  }
+  textarea {
+    width: 50%!important;
+  }
+}

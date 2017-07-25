@@ -11,7 +11,7 @@ import * as actions from '../actions/productActions';
 
 Validator.useLang('fa');
 
-const renderField = ({
+export const renderField = ({
   input,
   label,
   type,
@@ -30,7 +30,7 @@ const renderField = ({
   </div>
 );
 
-const renderTextarea = ({
+export const renderTextarea = ({
   input,
   label,
   type,
@@ -121,7 +121,7 @@ class addAdvertising extends Component {
 
           {this.props.allowPrice == 'normal' && <Grid.Column computer={3} mobile={16}>
             <label htmlFor="price">قیمت</label>
-            <Field className="input" placeholder="به تومان" name="price" component={renderField} type="text"/>            
+            <Field className="input" placeholder="به تومان" name="price" component={renderField} type="text"/>
           </Grid.Column>}
 
           <Grid.Column computer={8} mobile={16}>

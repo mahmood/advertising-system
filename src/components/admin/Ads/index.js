@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Layout from '../layouts/Admin';
+import Layout from '../../layouts/Admin';
 import { Button, Table, Icon } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/adminAdsActions';
+import { Link } from 'react-router-dom';
+import * as actions from '../../../actions/adminAdsActions';
 import AdsItem from './AdsItem';
 
 class Ads extends Component {
@@ -18,7 +19,7 @@ class Ads extends Component {
         </Helmet>
         <section className="product__inner">
           <h2><Icon name="computer" size="small"></Icon> آگهی ها</h2>
-          <Button primary>افزودن آگهی</Button>
+          <Link to="/admin/ads/add"><Button primary>افزودن آگهی</Button></Link>
           <Table>
             <Table.Header>
               <Table.Row>

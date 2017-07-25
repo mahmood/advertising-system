@@ -239,3 +239,13 @@ input, textarea {
 .product__inner td .button {
   margin-right: 2.5px;
   margin-left: 2.5px; }
+
+.addAdvForm input {
+  width: 30% !important; }
+
+.addAdvForm select {
+  width: 30% !important;
+  margin-bottom: 20px; }
+
+.addAdvForm textarea {
+  width: 50% !important; }
