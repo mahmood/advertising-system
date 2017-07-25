@@ -7,5 +7,6 @@ Route.group('version1', () => {
   Route.post('register', 'UsersController.register');
   Route.get('product/search', 'ProductController.search');
   Route.resource('product', 'ProductController');
+  Route.post('product/:id/verify', 'ProductController.verifyProduct')
   Route.resource('category', 'CategoryController');
 }).prefix('api/v1');

@@ -23,9 +23,9 @@ class ProductController {
   }
 
   * destroy (request, response) {
-    const params = request.params('id');
-    const product1 = yield Product.findBy('id', params.id);
-    yield product1.delete();
+    const {id} = request.params('id');
+    const ads = yield Product.findBy('id', id);
+    yield ads.delete();
     response.json({ msg: 'product deleted successfully!' });
   }
 
@@ -58,6 +58,14 @@ class ProductController {
 
     const products = yield Product.query().where('name', 'LIKE', `%${term}%`);
     response.json(products);
+  }
+
+  * verifyProduct (request, response) {
+    const {id} = request.params('id');
+    let ads = yield Product.findBy('id', id)
+    ads.verified = 1;
+    yield ads.save();
+    response.json({ads, msg: 'با موفقیت تایید شد.'});
   }
 }
 
