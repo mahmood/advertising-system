@@ -12,6 +12,11 @@ class Ads extends Component {
     this.props.fetchProducts();
   }
   render() {
+    const { 
+      ads,
+      deleteProduct,
+      verifyProduct
+    } = this.props;
     return (
       <Layout>
         <Helmet>
@@ -35,7 +40,13 @@ class Ads extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-            {this.props.ads && this.props.ads.map((ad, index) => <AdsItem key={ad.id} index={index} {...ad} deleteProduct={this.props.deleteProduct} verifyProduct={this.props.verifyProduct}/>)}
+            {ads && ads.map((ad, index) => 
+              <AdsItem key={ad.id}
+                index={index}
+                {...ad}
+                deleteProduct={deleteProduct}
+                verifyProduct={verifyProduct}
+              />)}
           </Table.Body>
           </Table>
         </section>

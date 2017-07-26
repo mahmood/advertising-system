@@ -28,7 +28,8 @@ class AddAds extends Component {
     console.log('userId', this.props.userId);
   }
   render() {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
+    const { cat } = this.state
     return (
       <Layout>
         <Helmet>
@@ -42,7 +43,7 @@ class AddAds extends Component {
             <label htmlFor="category">دسته بندی</label>
             <Field style={{height: '2.8rem'}} component="select" name="category">
               <option value="" hidden>انتخاب کنید</option>
-              {this.state.cat.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
+              {cat.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
             </Field>
             <label htmlFor="price_type">نوع فروش</label>
             <Field style={{height: '2.8rem'}} component="select" name="price_type">
@@ -73,7 +74,13 @@ const validate = values => {
   };
 
   const validator = new Validator(values, rules);
-  validator.setAttributeNames({name: 'نام', category: 'دسته بندی', images: 'عکس', price: 'قیمت', description: 'توضیحات'});
+  validator.setAttributeNames({
+    name: 'نام',
+    category: 'دسته بندی',
+    images: 'عکس',
+    price: 'قیمت',
+    description: 'توضیحات'
+  });
   validator.passes();
   return validator
     .errors

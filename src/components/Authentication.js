@@ -26,7 +26,7 @@ export default function(ComposedComponent, allowed) {
 
   const mapStateToProps = ({auth: { loggedIn, data: { role } }}, ownProps) => {
     return {
-      isLoggedInIn,
+      isLoggedIn: loggedIn,
       role
     };
   };

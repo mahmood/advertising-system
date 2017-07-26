@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 class AdminLayout extends Component {
   render() {
+    const { children } = this.props;
     return (
       <div className="rtl">
         <Grid>
@@ -32,7 +33,7 @@ class AdminLayout extends Component {
                   هدر
                 </section>
                 <section className="main__inner">
-                  {this.props.children}
+                  {children}
                 </section>
               </main>
             </Grid.Column>

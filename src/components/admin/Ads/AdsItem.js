@@ -25,17 +25,29 @@ function renderIndex(index) {
   }
 }
 
-const AdsItem = props => {
+const AdsItem = ({
+  id,
+  index,
+  name,
+  price_type,
+  price,
+  created_at,
+  category,
+  description,
+  deleteProduct,
+  verifyProduct,
+  verified
+}) => {
   return (
     <Table.Row>
-      <Table.Cell><PersianNumber>{renderIndex(props.index)}</PersianNumber></Table.Cell>
-      <Table.Cell>{props.name}</Table.Cell>
+      <Table.Cell><PersianNumber>{renderIndex(index)}</PersianNumber></Table.Cell>
+      <Table.Cell>{name}</Table.Cell>
       <Table.Cell>تایید شده</Table.Cell>
-      <Table.Cell>{renderPriceType(props.price_type)}</Table.Cell>
-      <Table.Cell><PersianNumberWords>{props.price.toString()}</PersianNumberWords> تومان</Table.Cell>
-      <Table.Cell>{moment(props.created_at, "YYYY-MM-DD h:m:s").format("jD jMMMM jYYYY")}</Table.Cell>
-      <Table.Cell>{props.category}</Table.Cell>
-      <Table.Cell>{props.description.slice(0, 200)}</Table.Cell>
+      <Table.Cell>{renderPriceType(price_type)}</Table.Cell>
+      <Table.Cell><PersianNumberWords>{price.toString()}</PersianNumberWords> تومان</Table.Cell>
+      <Table.Cell>{moment(created_at, "YYYY-MM-DD h:m:s").format("jD jMMMM jYYYY")}</Table.Cell>
+      <Table.Cell>{category}</Table.Cell>
+      <Table.Cell>{description.slice(0, 200)}</Table.Cell>
       <Table.Cell>
         <Popup
           trigger={<Button size="small" color="red" animated="vertical">
@@ -44,18 +56,18 @@ const AdsItem = props => {
             <Icon name="trash" />
           </Button.Content>
         </Button>}
-          content={<Button color='green' onClick={() => props.deleteProduct(props.id)} content='آیا واقعا حذف شود؟' />}
+          content={<Button color='green' onClick={() => deleteProduct(id)} content='آیا واقعا حذف شود؟' />}
           on='click'
           position='top right'
         />
-        {props.verified !== 1 && <Popup
+        {verified !== 1 && <Popup
         trigger={<Button size="small" color="green" animated="vertical">
         <Button.Content hidden>تایید</Button.Content>
         <Button.Content visible>
           <Icon name="check" />
         </Button.Content>
     </Button>}
-        content={<Button onClick={() => props.verifyProduct(props.id)} color='green' content='تایید آگهی' />}
+        content={<Button onClick={() => verifyProduct(id)} color='green' content='تایید آگهی' />}
         on='click'
         position='top right'
       />}
