@@ -30,11 +30,21 @@ const renderField = ({
 )
 
 class LoginModal extends Component {
+  constructor(props) {
+    super(props);
+    this.onLoginFormSubmit = this.onLoginFormSubmit.bind(this);
+  }
   onLoginFormSubmit({email, fname, lname, password}) {
-    console.log(this.props);    
     this.props.register({email, fname, lname, password});
   }
   render() {
+    const { 
+      handleSubmit,
+      registerError,
+      isLoading,
+      pristine,
+      submiting
+    } = this.props;
     return (
       <NoSSR>
         <Modal
@@ -43,13 +53,34 @@ class LoginModal extends Component {
           <Modal.Header>عضویت</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
-              {this.props.registerError ? <Message color="red">{this.props.registerError}</Message> : <div></div>}
-              <form method="post" onSubmit={this.props.handleSubmit(this.onLoginFormSubmit.bind(this))} className="ui form">
+              {registerError && <Message color="red">{registerError}</Message>}
+              <form method="post" onSubmit={handleSubmit(this.onLoginFormSubmit)} className="ui form">
                 <Field half label="نام" name="fname" component={renderField} type="text"/>
-                <Field marginRight half className="padd-right" label="نام خانوادگی" name="lname" component={renderField} type="text"/>
-                <Field label="ایمیل" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
+                <Field 
+                  marginRight 
+                  half 
+                  className="padd-right" 
+                  label="نام خانوادگی" 
+                  name="lname" 
+                  component={renderField} 
+                  type="text"
+                />
+                <Field 
+                  label="ایمیل" 
+                  name="email" 
+                  placeholder="imahmoodzamani@gmail.com" 
+                  component={renderField} 
+                  type="text"
+                />
                 <Field label="رمز عبور" name="password" component={renderField} type="password" />
-                <Button loading={this.props.isLoading} disabled={this.props.pristine || this.props.submiting} type="submit" className="submit__btn" positive>ثبت نام</Button>
+                <Button 
+                  loading={isLoading} 
+                  disabled={pristine || submiting} 
+                  type="submit" 
+                  className="submit__btn" 
+                  positive>
+                  ثبت نام
+                </Button>
               </form>
             </Modal.Description>
           </Modal.Content>
@@ -78,11 +109,11 @@ const form = reduxForm({
   validate
 })(LoginModal);
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({auth: {registerError, isLoading}}, ownProps) => {
   return {
-    registerError: state.auth.registerError,
-    isLoading: state.auth.isLoading
-  }
-}
+    registerError: registerError,
+    isLoading: isLoading
+  };
+};
 
 export default connect(mapStateToProps, actions)(form);

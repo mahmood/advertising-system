@@ -3,14 +3,15 @@ import {Link} from 'react-router-dom';
 
 class SideMenu extends Component {
   render() {
+    const { items } = this.props;
     return (
       <aside className="sideMenu">
         <div className="menu">
           <ul>
-            {this.props.items && this.props.items.map(item => {
+            {items && items.map(({id, name, slug}) => {
               return (
-                <li key={item.id}>
-                  <Link to={`/browse/${item.slug}/${item.id}`}>{item.name}</Link>
+                <li key={id}>
+                  <Link to={`/browse/${slug}/${id}`}>{name}</Link>
                 </li>
               );
             })}

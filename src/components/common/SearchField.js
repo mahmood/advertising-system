@@ -14,7 +14,7 @@ const renderField = ({
 }) => (
   <div className="half">
     <div className="input-align">
-      <label>{label}</label>    
+      <label>{label}</label>
       <input {...input} placeholder={placeholder} type={type} />
       {touched &&
         ((error && <span className="error">{error}</span>) ||
@@ -24,22 +24,37 @@ const renderField = ({
 )
 
 class SearchField extends Component {
-  onSearchFormSubmit(values) {
-    this.props.searchProduct(values.term);
+  constructor(props) {
+    super(props);
+    this.onSearchFormSubmit = this.onSearchFormSubmit.bind(this);
+  }
+  onSearchFormSubmit({ term }) {
+    this.props.searchProduct(term);
   }
   render() {
+    const { 
+      handleSubmit,
+      categories,
+      term,
+      fetchProducts
+    } = this.props;
     return (
       <div>
         <div className="search">
-          <form className="form ui" onSubmit={this.props.handleSubmit(this.onSearchFormSubmit.bind(this))}>
+          <form className="form ui" onSubmit={handleSubmit(this.onSearchFormSubmit)}>
             <Field name="term" type="text" placeholder="جستجو در آگهی ها" component={renderField}/>
             <Field name="category" className="half pad" type="select" component="select">
-              {this.props.categories && this.props.categories.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>)}
+              {categories && categories.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>)}
             </Field>
             <Button color="green">جستجو</Button>
           </form>
         </div>
-        {this.props.term && <span className="search_term">{this.props.term} <Icon name="close" onClick={ () => this.props.fetchProducts() } size="large"/></span>}
+        {term && 
+          <span className="search_term">
+            {term} 
+            <Icon name="close" onClick={ () => fetchProducts() } size="large"/>
+          </span>
+        }
       </div>
     );
   }
@@ -61,7 +76,7 @@ const form = reduxForm({
   validate
 })(SearchField);
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     term : state.product.term
   }

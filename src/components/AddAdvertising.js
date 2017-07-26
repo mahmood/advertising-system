@@ -86,6 +86,11 @@ class addAdvertising extends Component {
       });
   }
   render() {
+    const {
+      handleSubmit,
+      allowPrice
+    } = this.props;
+    const { cat } = this.state;
     return (
       <Layout>
         <Helmet>
@@ -94,7 +99,7 @@ class addAdvertising extends Component {
         <Grid container className="addProduct">
           <h2>افزودن آگهی</h2>
           <Grid.Row>
-          <form method="post" encType='multipart/form-data' onSubmit={this.props.handleSubmit(this.onFormSubmit.bind(this))} className="grid ui form">
+          <form method="post" encType='multipart/form-data' onSubmit={handleSubmit(this.onFormSubmit.bind(this))} className="grid ui form">
           
           <Grid.Column computer={7} mobile={16}>
               <label htmlFor="name">عنوان</label>
@@ -105,7 +110,7 @@ class addAdvertising extends Component {
             <label htmlFor="category">دسته بندی</label>
             <Field style={{height: '2.8rem'}} component="select" name="category">
               <option value="" hidden>انتخاب کنید</option>
-              {this.state.cat.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
+              {cat.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
             </Field>
           </Grid.Column>
 
@@ -119,7 +124,7 @@ class addAdvertising extends Component {
             </Field>
           </Grid.Column>
 
-          {this.props.allowPrice == 'normal' && <Grid.Column computer={3} mobile={16}>
+          {allowPrice == 'normal' && <Grid.Column computer={3} mobile={16}>
             <label htmlFor="price">قیمت</label>
             <Field className="input" placeholder="به تومان" name="price" component={renderField} type="text"/>
           </Grid.Column>}
@@ -133,19 +138,6 @@ class addAdvertising extends Component {
             <label htmlFor="textarea">توضیحات</label>
             <Field className="input" name="description" component={renderTextarea}/>
           </Grid.Column>
-
-          {/*<Grid.Column computer={16} mobile={16}>
-            <label htmlFor="map">نقشه</label>
-              <Map
-                style={{ height: '180px' }}
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
-                onGoogleApiLoaded={({map, maps}) => renderMarkers(map, maps)}
-                yesIWantToUseGoogleMapApiInternals={true}
-              >
-              </Map>
-             <br/>
-          </Grid.Column>*/}
               <Button type="submit" className="submit__btn" positive>ثبت آگهی</Button>
             </form>
           </Grid.Row>

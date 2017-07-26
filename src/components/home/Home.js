@@ -1,28 +1,38 @@
 import React, {Component} from 'react';
-import { Grid, Card, Icon, Image, Segment, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid, Card, Image, Segment, Dimmer, Loader } from 'semantic-ui-react';
+import Header from '../common/Header';
+import SideMenu from '../common/SideMenu';
+import ProductItem from '../common/ProductItem';
+import NotFound from './NotFound';
+import SearchField from '../common/SearchField';
 import { StickyContainer, Sticky } from 'react-sticky';
-import Header from './common/Header';
-import SideMenu from './common/SideMenu';
-import ProductItem from './ProductItem';
 import { Helmet } from 'react-helmet';
-import SearchField from './common/SearchField';
 import { connect } from 'react-redux';
-import * as actions from '../actions/productActions';
+import * as actions from '../../actions/productActions';
 
 class Home extends Component {
   stickyMenu(style) {
+    const { categories } = this.props;
     style = {...style, top: '10px'};
     return (
       <div style={style}>
-        <SideMenu items={this.props.categories} />
+        <SideMenu items={categories} />
       </div>
     )
   }
   componentDidMount() {
-    this.props.fetchProducts();
-    this.props.fetchCategories();
+    const { fetchCategories, fetchProducts } = this.props;
+    fetchProducts();
+    fetchCategories();
   }
   render() {
+    const {
+      isLoading,
+      categories,
+      products,
+      fetchCategories,
+      fetchProducts
+    } = this.props;
     return (
       <div>
         <Helmet>
@@ -38,13 +48,13 @@ class Home extends Component {
                 </Sticky>
               </Grid.Column>
               <Grid.Column computer={13}>
-              <SearchField categories={this.props.categories} />
+              <SearchField categories={categories} />
                 <Grid>
-                  <Dimmer active={this.props.isLoading} inverted>
+                  <Dimmer active={isLoading} inverted>
                     <Loader size="large" inverted content='درحال بارگذاری' />
                   </Dimmer>
-                  {this.props.products && this.props.products.map(product => <ProductItem key={product.id} {...product}/>)}
-                  {this.props.isLoading == false && this.props.products.length == 0 && <div className="not-found"><div><Icon name="frown" size="massive"/></div> یافت نشد.</div>}
+                  {products && products.map(product => <ProductItem key={product.id} {...product}/>)}
+                  {isLoading == false && products.length == 0 && <NotFound />}
                 </Grid>
               </Grid.Column>
             </Grid.Row>
@@ -56,10 +66,11 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const { data, isLoading, cat } = state.product;
   return {
-    products: state.product.data,
-    isLoading: state.product.isLoading,
-    categories: state.product.cat
+    products: data,
+    isLoading: isLoading,
+    categories: cat
   }
 }
 

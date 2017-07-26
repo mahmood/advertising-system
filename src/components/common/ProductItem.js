@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Card, Image, Icon, Grid} from 'semantic-ui-react';
 import { PersianNumber } from 'react-persian';
-import moment from 'moment';
-moment.locale('fa');
+import moment from 'jalali-moment';
 
 class ProductItem extends Component {
   renderPrice(price, type) {
@@ -15,27 +14,34 @@ class ProductItem extends Component {
     }
   }
   render() {
+    const {
+      created_at,
+      description,
+      price,
+      price_type,
+      image
+    } = this.props;
     return (
       <Grid.Column computer={4}>
       <Card className="product">
-        <Image className="product__image" src={`http://localhost:3333/uploads/${this.props.image}`}/>
+        <Image className="product__image" src={`http://localhost:3333/uploads/${image}`}/>
         <Card.Content>
           <Card.Header>
             {this.props.name}
           </Card.Header>
           <Card.Meta>
             <span className='date'>
-              {moment(this.props.created_at, "YYYY-MM-DD h:m:s").fromNow()}
+              {moment(created_at, "YYYY-MM-DD h:m:s").fromNow()}
             </span>
           </Card.Meta>
           <Card.Description>
-            {this.props.description.slice(0, 150)}
+            {description.slice(0, 150)}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <a>
             <Icon name='money'/>
-            <PersianNumber>{this.renderPrice(this.props.price, this.props.price_type)}</PersianNumber>
+            <PersianNumber>{this.renderPrice(price, price_type)}</PersianNumber>
           </a>
         </Card.Content>
       </Card>

@@ -5,32 +5,29 @@ import {withRouter} from "react-router-dom";
 // Authenticaton HOC
 export default function(ComposedComponent, allowed) {
   class Authentication extends Component {
-    componentWillMount() {
-      console.log(this.props.role);
-      if(!this.props.isLogged) {
-        //Redirect to homepage
-          this.props.history.push('/');
-      }else if(this.props.role !== allowed) {
-        this.props.history.push('/');
+    handleAuth() {
+      const { isLoggedIn, role, history } = this.props;
+      if(!isLoggedIn) {
+        history.push('/');
+      }else if(role !== allowed) {
+        history.push('/');
       }
     }
+    componentWillMount() {
+      this.handleAuth();
+    }
     componentWillUpdate(nextProps) {
-      if(!nextProps.isLogged) {
-        //Redirect to homapage
-          this.props.history.push('/');
-      }else if(this.props.role !== allowed) {
-        this.props.history.push('/');
-      }
+      this.handleAuth();
     }
     render(){
       return <ComposedComponent {...this.props}/>;
     }
   }
 
-  const mapStateToProps = (state, ownProps) => {
+  const mapStateToProps = ({auth: { loggedIn, data: { role } }}, ownProps) => {
     return {
-      isLogged: state.auth.loggedIn,
-      role: state.auth.data.role
+      isLoggedInIn,
+      role
     };
   };
   const router = withRouter(Authentication);

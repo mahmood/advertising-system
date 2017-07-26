@@ -25,10 +25,21 @@ const renderField = ({
 )
 
 class LoginModal extends Component {
+  constructor(props) {
+    super(props);
+    this.onLoginFormSubmit = this.onLoginFormSubmit.bind(this);
+  }
   onLoginFormSubmit({email, password}) {
     this.props.signIn({email, password});
   }
   render() {
+    const {
+      authError,
+      handleSubmit,
+      isLoading,
+      pristine,
+      submiting,
+    } = this.props;
     return (
       <NoSSR>
         <Modal
@@ -37,13 +48,24 @@ class LoginModal extends Component {
           <Modal.Header>ورود</Modal.Header>
           <Modal.Content image>
             <Modal.Description>
-              {this.props.authError ? <Message color="red">{this.props.authError}</Message> : <div></div>}
-              <form method="post" onSubmit={this.props.handleSubmit(this.onLoginFormSubmit.bind(this))} className="ui form">
+              {authError ? <Message color="red">{authError}</Message> : <div></div>}
+              <form method="post" onSubmit={handleSubmit(this.onLoginFormSubmit)} className="ui form">
                 <label htmlFor="email">ایمیل</label>
-                <Field className="input" name="email" placeholder="imahmoodzamani@gmail.com" component={renderField} type="text" />
+                <Field 
+                  className="input" 
+                  name="email" 
+                  placeholder="imahmoodzamani@gmail.com" 
+                  component={renderField} 
+                  type="text"
+                />
                 <label htmlFor="password">رمز عبور</label>
                 <Field className="input" name="password" component={renderField} type="password" />
-                <Button loading={this.props.isLoading} disabled={this.props.pristine || this.props.submiting} type="submit" className="submit__btn" positive>ورود</Button>
+                <Button 
+                  loading={isLoading} 
+                  disabled={pristine || submiting} 
+                  type="submit" 
+                  className="submit__btn" 
+                  positive>ورود</Button>
               </form>
             </Modal.Description>
           </Modal.Content>
@@ -70,10 +92,10 @@ const form = reduxForm({
   validate
 })(LoginModal);
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({auth: {error, isLoading}}, ownProps) => {
   return {
-    authError: state.auth.error,
-    isLoading: state.auth.isLoading
+    authError: error,
+    isLoading: isLoading
   }
 }
 

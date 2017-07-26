@@ -2,9 +2,9 @@ import React from 'react';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 import NotFound from './components/common/NotFound';
-import Home from './components/Home'
+import Home from './components/home/Home'
 import AddAdvertising from './components/AddAdvertising';
-import Browse from './components/Browse';
+import Browse from './components/‌‌Browse/Browse';
 import About from './components/About';
 import Admin from './components/admin';
 import Ads from './components/admin/Ads'
