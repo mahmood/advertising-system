@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Icon } from 'semantic-ui-react';
 import Validator from 'validatorjs';
@@ -80,6 +81,13 @@ const mapStateToProps = (state, ownProps) => {
   return {
     term : state.product.term
   }
+}
+
+SearchField.propTypes = {
+  term: PropTypes.string,
+  handleSubmit: PropTypes.func,
+  fetchProducts: PropTypes.func,
+  categories: PropTypes.array
 }
 
 export default connect(mapStateToProps, actions)(form);

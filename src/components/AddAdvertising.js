@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Layout from '../components/layouts/Home';
 import {Helmet} from 'react-helmet';
 import {Grid, Button} from 'semantic-ui-react';
@@ -74,7 +75,13 @@ const renderDropzoneInput = (field) => {
   );
 }
 class addAdvertising extends Component {
-  state = { cat: [] };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cat: []
+    };
+  }
   onFormSubmit(data) {
     const userId = this.props.userId;
     this.props.addProduct(data, userId);
@@ -173,5 +180,11 @@ const mapStateToProps = state => {
     userId: state.auth.data.id
   }
 }
+
+addAdvertising.propTypes = {
+  allowPrice: PropTypes.bool,
+  userId: PropTypes.number,
+  handleSubmit: PropTypes.func
+};
 
 export default connect(mapStateToProps, actions)(form);

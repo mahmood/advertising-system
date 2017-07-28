@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Card, Image, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import Header from '../common/Header';
 import SideMenu from '../common/SideMenu';
@@ -73,5 +74,13 @@ const mapStateToProps = (state, ownProps) => {
     categories: cat
   }
 }
+
+Home.propTypes = {
+  products: PropTypes.array,
+  isLoading: PropTypes.bool,
+  categories: PropTypes.array,
+  fetchProducts: PropTypes.func,
+  fetchCategories: PropTypes.func
+};
 
 export default connect(mapStateToProps, actions)(Home);

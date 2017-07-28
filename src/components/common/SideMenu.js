@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 class SideMenu extends Component {
@@ -21,5 +22,9 @@ class SideMenu extends Component {
     );
   }
 }
+
+SideMenu.propTypes = {
+  items: PropTypes.array
+};
 
 export default SideMenu;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Dropdown, Menu, Header, Modal } from 'semantic-ui-react';
 import NoSSR from 'react-no-ssr';
@@ -13,35 +14,41 @@ class HeaderComponent extends Component {
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
-  handleLogoutClick = () => {
+  handleLogoutClick(){
     this.props.logOut();
   }
 
-  renderMenu = () => (
-    <Menu.Menu position="left">
-      <div className="inline-login">
-        <LoginModal />
-        <RegisterModal />
-      </div>
-    </Menu.Menu> 
-  )
+  renderMenu() {
+    return (
+      <Menu.Menu position="left">
+        <div className="inline-login">
+          <LoginModal />
+          <RegisterModal />
+        </div>
+      </Menu.Menu>
+    );
+  }
 
-  renderUserInfo = (fname, lname) => (
-    <Menu.Menu position="left">
-      <Dropdown item text={fname}>
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={this.handleLogoutClick}>خروج</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-      {this.renderAdd()}
-    </Menu.Menu>
-  )
+  renderUserInfo(fname, lname) {
+    return (
+      <Menu.Menu position="left">
+        <Dropdown item text={fname}>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={this.handleLogoutClick}>خروج</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        {this.renderAdd()}
+      </Menu.Menu>
+    )
+  }
 
-  renderAdd = () => (
-    <Menu.Item>
-      <Link className="ui red button" to="/new">+ ثبت رایگان آگهی</Link>
-    </Menu.Item>
-  )
+  renderAdd(){
+    return (
+      <Menu.Item>
+        <Link className="ui red button" to="/new">+ ثبت رایگان آگهی</Link>
+      </Menu.Item>
+    );
+  }
 
   render() {
     const { auth } = this.props;
@@ -62,6 +69,10 @@ const mapStateToProps = (state, ownProps) => {
   return {
     auth: state.auth
   }
+}
+
+Header.propTypes = {
+  auth: PropTypes.object
 }
 
 export default connect(mapStateToProps, actions)(HeaderComponent);

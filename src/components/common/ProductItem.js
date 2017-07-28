@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Card, Image, Icon, Grid} from 'semantic-ui-react';
 import { PersianNumber } from 'react-persian';
 import moment from 'jalali-moment';
@@ -49,5 +50,13 @@ class ProductItem extends Component {
     );
   }
 }
+
+ProductItem.propTypes = {
+  created_at: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.number,
+  price_type: PropTypes.string,
+  image: PropTypes.string
+};
 
 export default ProductItem;

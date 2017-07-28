@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
@@ -43,5 +44,9 @@ class AdminLayout extends Component {
     );
   }
 }
+
+AdminLayout.propTypes = {
+  children: PropTypes.node
+};
 
 export default AdminLayout;

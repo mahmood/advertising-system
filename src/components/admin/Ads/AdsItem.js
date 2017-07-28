@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table, Button, Icon, Popup } from 'semantic-ui-react';
 import { PersianNumber, PersianNumberWords } from 'react-persian';
 import * as moment from 'jalali-moment';
@@ -74,6 +75,20 @@ const AdsItem = ({
       </Table.Cell>
     </Table.Row>
   );
+};
+
+AdsItem.propTypes = {
+  id: PropTypes.number,
+  index: PropTypes.number,
+  name: PropTypes.string,
+  price_type: PropTypes.string,
+  price: PropTypes.number,
+  created_at: PropTypes.string,
+  category: PropTypes.string,
+  description: PropTypes.string,
+  deleteProduct: PropTypes.func,
+  verifyProduct: PropTypes.func,
+  verified: PropTypes.number
 };
 
 export default AdsItem;

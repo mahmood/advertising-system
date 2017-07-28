@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Layout from '../../layouts/Admin';
 import { Button, Table, Icon } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
@@ -60,5 +61,11 @@ const mapStateToProps = (state, ownProps) => {
     ads: state.ads.data
   }
 }
+
+Ads.propTypes = {
+  ads: PropTypes.array,
+  deleteProduct: PropTypes.func,
+  verifyProduct: PropTypes.func
+};
 
 export default connect(mapStateToProps, actions)(Ads);

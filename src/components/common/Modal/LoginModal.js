@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import NoSSR from 'react-no-ssr';
 import {Header, Modal, Button, Message} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
@@ -97,6 +98,11 @@ const mapStateToProps = ({auth: {error, isLoading}}, ownProps) => {
     authError: error,
     isLoading: isLoading
   }
+};
+
+LoginModal.propTypes = {
+  authError: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 export default connect(mapStateToProps, actions)(form);

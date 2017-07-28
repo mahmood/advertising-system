@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import NoSSR from 'react-no-ssr';
 import {Header, Modal, Button, Message} from 'semantic-ui-react';
 import {Field, reduxForm} from 'redux-form';
@@ -29,7 +30,7 @@ const renderField = ({
   </div>
 )
 
-class LoginModal extends Component {
+class RegisterModal extends Component {
   constructor(props) {
     super(props);
     this.onLoginFormSubmit = this.onLoginFormSubmit.bind(this);
@@ -107,13 +108,18 @@ const validate = values => {
 const form = reduxForm({
   form: 'register',
   validate
-})(LoginModal);
+})(RegisterModal);
 
 const mapStateToProps = ({auth: {registerError, isLoading}}, ownProps) => {
   return {
     registerError: registerError,
     isLoading: isLoading
   };
+};
+
+RegisterModal.propTypes = {
+  authError: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 export default connect(mapStateToProps, actions)(form);
