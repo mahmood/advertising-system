@@ -13,7 +13,7 @@ import * as actions from '../../actions/productActions';
 class Home extends Component {
   stickyMenu(style) {
     const { categories } = this.props;
-    style = {...style, top: '10px'};
+    style = Object.assign({}, style, { top: '10px' });
     return (
       <div style={style}>
         <SideMenu items={categories} />

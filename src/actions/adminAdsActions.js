@@ -1,5 +1,10 @@
-import { FETCH_ADMIN_ADS_SUCCESS, FETCH_ADMIN_ADS_FAILED, DELETE_ADMIN_PRODUCT_SUCCESS, VERIFY_ADMIN_PRODUCT_SUCCESS } from './actionTypes';
-import axios from 'axios';
+import {
+  FETCH_ADMIN_ADS_SUCCESS,
+  FETCH_ADMIN_ADS_FAILED,
+  DELETE_ADMIN_PRODUCT_SUCCESS,
+  VERIFY_ADMIN_PRODUCT_SUCCESS
+} from './actionTypes';
+import axios from 'axios'
 
 const ROOT_URL = 'http://localhost:3333/api/v1';
 

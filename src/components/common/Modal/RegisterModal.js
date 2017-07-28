@@ -88,7 +88,7 @@ class LoginModal extends Component {
       </NoSSR>
     )
   }
-};
+}
 
 const validate = values => {
   const rules = {

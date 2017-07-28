@@ -1,4 +1,9 @@
-import { AUTH_USER, LOGOUT, CREATE_USER_SUCCESS, CREATE_USER_FAILED } from './actionTypes';
+import {
+  AUTH_USER,
+  LOGOUT,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_FAILED
+} from './actionTypes';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
@@ -32,7 +37,7 @@ export const logOut = () => {
 
 export const register = (values) => {
   return dispatch => {
-    values = {...values, username: values.email};
+    values = Object.assign({}, values, { username: values.email });
     dispatch({ type: CREATE_USER_SUCCESS, isLoading: true });
     axios.post(`${ROOT_URL}/register`, values)
       .then(response => {
@@ -52,4 +57,4 @@ export const register = (values) => {
         dispatch({ type: CREATE_USER_FAILED, error: 'اکانت ساخته نشد.' })
       })
     }
-};
+  };

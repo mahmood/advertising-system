@@ -1,5 +1,4 @@
 import { StaticRouter, matchPath } from 'react-router-dom';
-
 import App from './App';
 import React from 'react';
 import express from 'express';
@@ -37,6 +36,7 @@ server
         </Provider>
       </StaticRouter>
     );
+
     const helmet = Helmet.renderStatic();
 
     // Grab the initial state from our Redux store

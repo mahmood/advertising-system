@@ -73,7 +73,7 @@ class LoginModal extends Component {
       </NoSSR>
     )
   }
-};
+}
 
 const validate = values => {
   const rules = {
@@ -97,6 +97,6 @@ const mapStateToProps = ({auth: {error, isLoading}}, ownProps) => {
     authError: error,
     isLoading: isLoading
   }
-}
+};
 
 export default connect(mapStateToProps, actions)(form);

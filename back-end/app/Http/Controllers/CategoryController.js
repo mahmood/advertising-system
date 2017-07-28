@@ -13,15 +13,16 @@ class CategoryController {
     const data = request.all();
 
     yield Category.create(data);
-    res.json({ msg: 'Category Created Successfully' });
+
+    res.json({ msg: 'Category Created Successfully'});
   }
 
   * show (request, response) {
     const { id } = request.params();
-    // const id = request.input('id');
 
     const products = yield Product.query().where('category', id).fetch();
     const currentCat = yield Category.query().where('id', id).select('id', 'name', 'slug').fetch();
+
     response.json({ products, currentCat });
   }
 
@@ -30,6 +31,7 @@ class CategoryController {
 
     const cat = Category.findBy('id', id);
     yield cat.delete();
+
     response.json({ msg: 'Category Deleted Successfully' });
   }
 }

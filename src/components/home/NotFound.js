@@ -1,6 +1,3 @@
-import React from 'react';
-import { Icon } from 'semantic-ui-react';
-
 const NotFound = () => {
   return (
     <div className="not-found">
