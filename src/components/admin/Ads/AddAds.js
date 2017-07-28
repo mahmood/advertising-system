@@ -4,7 +4,8 @@ import { Button, Table, Icon } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions/adminAdsActions';
-import { renderField, renderTextarea } from '../../AddAdvertising';
+import Dropzone from 'react-dropzone';
+import { renderField, renderTextarea, renderDropzoneInput } from '../../AddAdvertising';
 import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
 import Validator from 'validatorjs';
@@ -24,8 +25,7 @@ class AddAds extends Component {
     });
   }
   onFormSubmit(data){
-    console.log('form data', data);
-    console.log('userId', this.props.userId);
+    this.props.addProduct(data);
   }
   render() {
     const { handleSubmit } = this.props;
@@ -37,7 +37,7 @@ class AddAds extends Component {
         </Helmet>
         <section className="product__inner">
           <h2><Icon name="computer" size="small"></Icon> افزودن آگهی</h2>
-          <form className="form ui addAdvForm" onSubmit={handleSubmit(this.onFormSubmit)}>
+          <form encType='multipart/form-data' className="form ui addAdvForm" onSubmit={handleSubmit(this.onFormSubmit)}>
             <label htmlFor="name">عنوان</label>
             <Field className="input " name="name" component={renderField} type="text"/>
             <label htmlFor="category">دسته بندی</label>
@@ -45,6 +45,7 @@ class AddAds extends Component {
               <option value="" hidden>انتخاب کنید</option>
               {cat.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
             </Field>
+
             <label htmlFor="price_type">نوع فروش</label>
             <Field style={{height: '2.8rem'}} component="select" name="price_type">
               <option value="" hidden>انتخاب کنید</option>
@@ -52,10 +53,16 @@ class AddAds extends Component {
               <option value="normal">مقطوع</option>
               <option value="free">رایگان</option>
             </Field>
+
             <label htmlFor="price">قیمت</label>
             <Field className="input" placeholder="به تومان" name="price" component={renderField} type="text"/>
-            <label htmlFor="textarea">توضیحات</label>
+            
+            <label htmlFor="images">عکس</label>
+            <Field className="input" name="photo" component={renderDropzoneInput}/>
+
+            <label htmlFor="textarea">توضیحات</label>            
             <Field className="input" name="description" component={renderTextarea}/>
+
             <Button type="submit" color="green">ثبت آگهی</Button>
           </form>
         </section>
@@ -69,7 +76,7 @@ const validate = values => {
     name: 'required',
     category: 'required',
     price_type: 'required',
-    images: 'required',
+    // images: 'required',
     description: 'required'
   };
 
@@ -87,14 +94,8 @@ const validate = values => {
     .all();
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    userId: state.auth.data.id
-  }
-}
-
 const form = reduxForm({
   form: 'addAds',
   validate
 })(AddAds);
-export default connect(mapStateToProps, actions)(form);
+export default connect(null, actions)(form);

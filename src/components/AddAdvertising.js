@@ -5,7 +5,7 @@ import {Helmet} from 'react-helmet';
 import {Grid, Button} from 'semantic-ui-react';
 import {Field, reduxForm, formValueSelector} from 'redux-form';
 import {connect} from 'react-redux';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
 import Validator from 'validatorjs';
 import axios from 'axios';
 import * as actions from '../actions/productActions';
@@ -50,7 +50,7 @@ export const renderTextarea = ({
   </div>
 );
 
-const renderDropzoneInput = (field) => {
+export const renderDropzoneInput = (field) => {
   const files = field.input.value;
   return (
     <div>

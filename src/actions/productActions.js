@@ -14,7 +14,7 @@ export const addProduct = data => {
   newData.append('description', data.description);
 
   return dispatch => {
-    axios.post(`${ROOT_URL}/product`, newData, { headers: { Authorization: 'Bearer '+localStorage.getItem('token') } })
+    axios.post(`${ROOT_URL}/product`, newData, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(response => {
         dispatch(push('/'));
       })
