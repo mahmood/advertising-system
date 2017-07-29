@@ -1,6 +1,12 @@
 import { AUTH_USER, LOGOUT, CREATE_USER_FAILED, CREATE_USER_SUCCESS } from '../actions/actionTypes';
 
-const initialState = { loggedIn: false, error: null, isLoading: false, registerError: null };
+const initialState = {
+  loggedIn: false,
+  data: {},
+  error: null,
+  isLoading: false,
+  registerError: null 
+};
 
 export default function (state = initialState, action) {
   switch(action.type) {

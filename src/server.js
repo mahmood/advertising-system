@@ -23,7 +23,7 @@ server
     const params  = qs.parse(req.query);
     const cookies = new Cookies(req.headers.cookie || {});
     const loggedIn = cookies.get('jwt') ? true : false;
-    const auth = { loggedIn, error: null, data: cookies.get('data') };
+    const auth = { loggedIn, error: null, data: cookies.get('data') || {} };
     // Compile an initial state
     const preloadedState = { auth };
     // Create a new Redux store instance
