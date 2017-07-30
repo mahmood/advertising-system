@@ -1,6 +1,6 @@
 import { FETCH_ADMIN_ADS_SUCCESS, FETCH_ADMIN_ADS_FAILED, DELETE_ADMIN_PRODUCT_SUCCESS, VERIFY_ADMIN_PRODUCT_SUCCESS } from '../actions/actionTypes';
 
-const initialState = { data: null };
+const initialState = { data: [] };
 
 export default (state = initialState, action) => {
   switch(action.type){

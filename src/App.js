@@ -10,11 +10,11 @@ import About from './components/About';
 import Admin from './components/admin';
 import Ads from './components/admin/Ads'
 import AddAds from './components/admin/Ads/AddAds';
+import Category from './components/admin/Category';
 import Authentication from './components/Authentication';
 
 import 'semantic-ui-css/semantic.min.css';
 import './styles/App.css';
-
 
 // Async load
 // const Home = () => <Async load={import('./components/home/Home')} />;
@@ -35,6 +35,7 @@ const App = () => (
     <Route exact path="/admin" component={Authentication(Admin, 'admin')} />
     <Route exact path="/admin/ads" component={Authentication(Ads, 'admin')} />
     <Route exact path="/admin/ads/add" component={Authentication(AddAds, 'admin')} />
+    <Route exact path="/admin/category" component={Authentication(Category, 'admin')} />
     <Route component={NotFound} />
   </Switch>
 );

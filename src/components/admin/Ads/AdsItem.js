@@ -41,7 +41,7 @@ const AdsItem = ({
 }) => {
   return (
     <Table.Row>
-      <Table.Cell><PersianNumber>{renderIndex(index)}</PersianNumber></Table.Cell>
+      <Table.Cell><PersianNumber>{renderIndex(index).toString()}</PersianNumber></Table.Cell>
       <Table.Cell>{name}</Table.Cell>
       <Table.Cell>تایید شده</Table.Cell>
       <Table.Cell>{renderPriceType(price_type)}</Table.Cell>

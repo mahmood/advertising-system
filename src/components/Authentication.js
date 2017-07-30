@@ -32,4 +32,4 @@ export default function(ComposedComponent, allowed) {
   };
   const router = withRouter(Authentication);
   return connect(mapStateToProps)(router);
-};
+}
