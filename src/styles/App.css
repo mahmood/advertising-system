@@ -124,6 +124,8 @@ a {
 
 .product {
   min-height: 430px !important; }
+  .product a {
+    color: rgba(0, 0, 0, 0.68); }
   .product .product__image {
     width: 100%;
     height: 200px; }

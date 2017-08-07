@@ -3,11 +3,13 @@ import {
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILED,
   FETCH_CATEGORIES_SUCCESS,
-  SEARCH
+  SEARCH,
+  FETCH_SINGLE_PRODUCT_SUCCESS,  
+  FETCH_SINGLE_PRODUCT_FAILED
 } from '../actions/actionTypes';
 
 const initialState = {
-  data: null,
+  data: [ { name:'' } ],
   cat: null,
   error: null,
   term: null,
@@ -33,6 +35,8 @@ export default (state = initialState, action) => {
         data: action.data,
         term: action.term
       });
+    case FETCH_SINGLE_PRODUCT_SUCCESS:
+      return Object.assign({}, state, { data: action.data, isLoading: action.isLoading }); 
     default:
       return state;
   }

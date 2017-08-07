@@ -11,6 +11,7 @@ import Admin from './components/admin';
 import Ads from './components/admin/Ads'
 import AddAds from './components/admin/Ads/AddAds';
 import Category from './components/admin/Category';
+import AdsSingle from './components/single/AdsItem.js';
 import Authentication from './components/Authentication';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -32,6 +33,7 @@ const App = () => (
     <Route path="/new" component={AddAdvertising} />
     <Route path="/about" component={About} />
     <Route exact path="/browse/:slug/:id" component={Browse} />
+    <Route exact path="/ads/:id" component={AdsSingle} />
     <Route exact path="/admin" component={Authentication(Admin, 'admin')} />
     <Route exact path="/admin/ads" component={Authentication(Ads, 'admin')} />
     <Route exact path="/admin/ads/add" component={Authentication(AddAds, 'admin')} />
