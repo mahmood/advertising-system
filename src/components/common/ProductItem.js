@@ -37,7 +37,7 @@ class ProductItem extends Component {
             </span>
           </Card.Meta>
           <Card.Description>
-            {description.slice(0, 150)}
+            {description && description.slice(0, 150)}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
