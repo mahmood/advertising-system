@@ -1,4 +1,12 @@
-import { ADD_PRODUCT, FETCH_PRODUCT_FAILED, FETCH_PRODUCT_SUCCESS, FETCH_CATEGORIES_SUCCESS, SEARCH } from './actionTypes';
+import { 
+  ADD_PRODUCT,
+  FETCH_PRODUCT_FAILED,
+  FETCH_PRODUCT_SUCCESS,
+  FETCH_CATEGORIES_SUCCESS,
+  SEARCH,
+  FETCH_SINGLE_PRODUCT_SUCCESS,
+  FETCH_SINGLE_PRODUCT_FAILED
+} from './actionTypes';
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
@@ -65,5 +73,19 @@ export const searchProduct = term => {
       .catch(error => {
         dispatch({ type: SEARCH, term: null });
       });
+  }
+}
+
+// Fetch Single product with given id
+export const FetchSingleProduct = id => {
+  return dispatch => {
+    dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, isLoading: true });
+    axios.get(`${ROOT_URL}/product/${id}`)
+      .then(response => {
+        dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, data: response.data, isLoading: false });
+      })
+      .catch(error => {
+        dispatch({ type: FETCH_SINGLE_PRODUCT_FAILED, isLoading: false });
+      })
   }
 }

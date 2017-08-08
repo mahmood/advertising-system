@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Card, Image, Icon, Grid} from 'semantic-ui-react';
 import { PersianNumber } from 'react-persian';
 import moment from 'jalali-moment';
+import { Link } from 'react-router-dom';
 
 class ProductItem extends Component {
   renderPrice(price, type) {
@@ -28,7 +29,7 @@ class ProductItem extends Component {
         <Image className="product__image" src={`http://localhost:3333/uploads/${image}`}/>
         <Card.Content>
           <Card.Header>
-            {this.props.name}
+            <Link to={`ads/${this.props.id}`}>{this.props.name}</Link>
           </Card.Header>
           <Card.Meta>
             <span className='date'>
@@ -36,7 +37,7 @@ class ProductItem extends Component {
             </span>
           </Card.Meta>
           <Card.Description>
-            {description.slice(0, 150)}
+            {description && description.slice(0, 150)}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

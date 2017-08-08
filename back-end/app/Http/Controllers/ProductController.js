@@ -61,11 +61,29 @@ class ProductController {
   }
 
   * verifyProduct (request, response) {
-    const {id} = request.params('id');
+    const { id } = request.params('id');
     let ads = yield Product.findBy('id', id)
     ads.verified = 1;
     yield ads.save();
     response.json({ msg: 'با موفقیت تایید شد.' });
+  }
+
+  * show (request, response) {
+    const { id } = request.params('id');
+    // Fetch Adv with given id
+    let ads = yield Database.table('products')
+    .where('products.id', id)
+    .innerJoin('categories', 'products.category', 'categories.id')
+    .select('products.id',
+     'products.name as name',
+     'products.price',
+     'products.price_type',
+     'products.verified',
+     'products.created_at',
+     'products.image',
+     'categories.name as category',
+     'products.description')
+    response.json(ads);
   }
 }
 

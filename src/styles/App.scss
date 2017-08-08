@@ -165,6 +165,9 @@ a {
 
 .product {
   min-height: 430px!important;
+  a {
+    color: rgba(0,0,0,.68);
+  }
   .product__image {
     width: 100%;
     height: 200px;
@@ -324,5 +327,37 @@ input, textarea {
   }
   textarea {
     width: 50%!important;
+  }
+}
+
+.adsSingle {
+  h2 {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  &__date {
+    margin: 1rem 0;
+  }
+  .normal {
+    font-weight: normal!important;
+  }
+  &__property {
+    padding: 0;
+    margin: 10px 0 2rem;
+    li {
+      list-style: none;
+      border-bottom: solid 1px $grey;
+      padding: 15px 0;
+      font-size: 1.1rem;
+      span {
+        float: left;
+        font-weight: bold;
+      }
+    }
+  }
+  &__description {
+    line-height: 2;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
   }
 }
