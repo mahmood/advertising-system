@@ -50,7 +50,6 @@ class AdsItem extends Component {
         {this.props.error && <div>یافت نشد</div>}
         <Grid container className="adsSingle">
           <Grid.Row>
-          
             <Grid.Column computer="7" mobile="16">
               <h2>{name}</h2>
               <div className="adsSingle__date"><PersianNumber>{moment(created_at, "YYYY-MM-DD h:m:s").fromNow()}</PersianNumber></div>

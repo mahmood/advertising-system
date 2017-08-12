@@ -57,7 +57,6 @@ class HeaderComponent extends Component {
         <div className="logo"><Link to="/">دیوار</Link></div>
         <Link className="item" to="/">خانه</Link>
         <Link className="item" to="/about">درباره ما</Link>
-        <Link className="item" to="/admin">پنل مدیریت</Link>
           { auth.loggedIn ? this.renderUserInfo(auth.data.fname, auth.data.lname) : this.renderMenu() }
       </Menu>
     );
