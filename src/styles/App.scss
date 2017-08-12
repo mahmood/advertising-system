@@ -364,6 +364,12 @@ input, textarea {
     .menu  {
       .item {
         text-align: right!important;
+        a {
+           color: #171717;
+           &:hover {
+             color: #171717!important;
+           }
+        }
         i {
           margin: 0 0 0 5px!important;
         }

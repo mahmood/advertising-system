@@ -310,5 +310,11 @@ input, textarea {
 .adsSingle .dropdown .menu .item {
   text-align: right !important; }
 
+.adsSingle .dropdown .menu .item a {
+  color: #171717; }
+
+.adsSingle .dropdown .menu .item a:hover {
+  color: #171717 !important; }
+
 .adsSingle .dropdown .menu .item i {
   margin: 0 0 0 5px !important; }
