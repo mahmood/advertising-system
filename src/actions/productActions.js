@@ -82,10 +82,10 @@ export const FetchSingleProduct = id => {
     dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, isLoading: true });
     axios.get(`${ROOT_URL}/product/${id}`)
       .then(response => {
-        dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, data: response.data, isLoading: false });
+        dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, isLoading: false, data: response.data });
       })
       .catch(error => {
-        dispatch({ type: FETCH_SINGLE_PRODUCT_FAILED, isLoading: false });
+        dispatch({ type: FETCH_SINGLE_PRODUCT_FAILED, isLoading: false, error: true });
       })
   }
 }

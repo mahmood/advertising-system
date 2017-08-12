@@ -9,11 +9,12 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  data: [ { name:'' } ],
+  data: [ { name: '' } ],
   cat: null,
   error: null,
   term: null,
-  currentCat: null
+  currentCat: null,
+  isLoading: false
 };
 
 
@@ -36,7 +37,9 @@ export default (state = initialState, action) => {
         term: action.term
       });
     case FETCH_SINGLE_PRODUCT_SUCCESS:
-      return Object.assign({}, state, { data: action.data, isLoading: action.isLoading }); 
+      return Object.assign({}, state, { isLoading: action.isLoading, data: action.data }); 
+    case FETCH_SINGLE_PRODUCT_FAILED: 
+      return Object.assign({}, state, { isLoading: action.isLoading, error: action.error });
     default:
       return state;
   }

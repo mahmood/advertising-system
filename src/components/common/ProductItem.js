@@ -29,7 +29,7 @@ class ProductItem extends Component {
         <Image className="product__image" src={`http://localhost:3333/uploads/${image}`}/>
         <Card.Content>
           <Card.Header>
-            <Link to={`ads/${this.props.id}`}>{this.props.name}</Link>
+            <Link to={`/ads/${this.props.id}`}>{this.props.name}</Link>
           </Card.Header>
           <Card.Meta>
             <span className='date'>

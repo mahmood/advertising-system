@@ -34,20 +34,22 @@ class AdsItem extends Component {
       description,
       image,
       category,
-      isLoading,
       created_at
     } = this.props.product;
     const { pathname } = this.props.location;
+    console.log(this.props.isLoading)
     return (
       <Layout>
         <Helmet>
           <title>دیوار - مشخصات آگهی</title>
         </Helmet>
+        <Dimmer active={this.props.isLoading} inverted>
+          <Loader size="large" inverted content='درحال بارگذاری' />
+        </Dimmer>
+        {this.props.error && <div>یافت نشد</div>}
         <Grid container className="adsSingle">
           <Grid.Row>
-            <Dimmer active={isLoading} inverted>
-              <Loader size="large" inverted content='درحال بارگذاری' />
-            </Dimmer>
+          
             <Grid.Column computer="7" mobile="16">
               <h2>{name}</h2>
               <div className="adsSingle__date"><PersianNumber>{moment(created_at, "YYYY-MM-DD h:m:s").fromNow()}</PersianNumber></div>
@@ -80,7 +82,9 @@ class AdsItem extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    product: state.product.data[0]
+    isLoading: state.product.isLoading,
+    error: state.product.error,
+    product: state.product.data[0],
   }
 }
 
