@@ -3,7 +3,22 @@
 const User = use('App/Model/User');
 
 class UsersController {
-  * login(request, response) {
+
+  * index (request, response) {
+    const Users = yield User.all();
+
+    response.json(Users);
+  }
+
+  * destroy (request, response) {
+    const { id } = request.params('id');
+    const user = yield User.findBy('id', id);
+    yield user.delete();
+
+    response.json({ msg: 'User Deleted successfully!' })
+  }
+
+  * login (request, response) {
     const email = request.input('email')
     const password = request.input('password')
     try {
@@ -19,21 +34,21 @@ class UsersController {
     }
   }
 
-  * register(request, response) {
+  * register (request, response) {
     const data = request.only('username', 'password', 'fname', 'lname', 'email', 'telphone');
     yield User.create(data);
     response.json({ msg: 'کاربر با موقیت ساخته شد.' });
     return;
   }
 
-  * info(request, response) {
+  * info (request, response) {
     const data = {};
     response.json({
       ok: 'sd'
     });
   }
 
-  * profile(request, response) {
+  * profile (request, response) {
     const user = yield request.auth.getUser()
     if (user) {
       response.ok(user)

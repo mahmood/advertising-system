@@ -13,7 +13,7 @@ class AdminLayout extends Component {
             <Grid.Column computer={3}>
               <aside className="sidebar">
                 <header className="sidebar__title">
-                  پنل مدیریت دیوار
+                  پنل مدیریت آگهی آنلاین
                 </header>
                 <span className="sidebar__category">عمومی</span>
                 <nav className="sidebar__nav">
@@ -21,7 +21,7 @@ class AdminLayout extends Component {
                     <li><Link to="/admin"><Icon name="dashboard" size="large" /> داشبورد</Link></li>
                     <li><Link to="/admin/ads"><Icon name="block layout" size="large" /> آگهی ها</Link></li>
                     <li><Link to="/admin/category"><Icon name="sitemap" size="large" /> دسته بندی</Link></li>
-                    <li><a href="#"><Icon name="users" size="large" /> کاربران</a></li>
+                    <li><Link to="/admin/users"><Icon name="users" size="large" /> کاربران</Link></li>
                     <li><a href="#"><Icon name="setting" size="large" /> تنظیمات</a></li>
                     <li><Link to="/"><Icon name="computer" size="large" /> نمایش سایت</Link></li>
                   </ul>

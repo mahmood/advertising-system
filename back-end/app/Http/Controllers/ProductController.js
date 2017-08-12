@@ -23,7 +23,7 @@ class ProductController {
   }
 
   * destroy (request, response) {
-    const {id} = request.params('id');
+    const { id } = request.params('id');
     const ads = yield Product.findBy('id', id);
     yield ads.delete();
     response.json({ msg: 'product deleted successfully!' });

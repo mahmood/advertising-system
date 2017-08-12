@@ -4,6 +4,7 @@ import authReducer from './authReducer';
 import productReducer from './productReducer';
 import adminAdsReducer from './adminAdsReducer';
 import adminCatsReducer from './adminCatsReducer';
+import adminUsersReducer from './adminUsersReducer';
 import { routerReducer } from 'react-router-redux';
 
 
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   cat: adminCatsReducer,
   form: formReducer,
   router: routerReducer,
-  product: productReducer
+  product: productReducer,
+  users: adminUsersReducer
 });
 
 export default rootReducer;

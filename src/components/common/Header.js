@@ -54,7 +54,7 @@ class HeaderComponent extends Component {
     const { auth } = this.props;
     return (
       <Menu size='massive' className="no-radius">
-        <div className="logo"><Link to="/">دیوار</Link></div>
+        <div className="logo"><Link to="/">آگهی آنلاین</Link></div>
         <Link className="item" to="/">خانه</Link>
         <Link className="item" to="/about">درباره ما</Link>
           { auth.loggedIn ? this.renderUserInfo(auth.data.fname, auth.data.lname) : this.renderMenu() }
