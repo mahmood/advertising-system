@@ -360,4 +360,14 @@ input, textarea {
     font-size: 1.1rem;
     white-space: pre-wrap;
   }
+  .dropdown {
+    .menu  {
+      .item {
+        text-align: right!important;
+        i {
+          margin: 0 0 0 5px!important;
+        }
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../layouts/Home';
-import { Grid, Button, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid, Button, Dimmer, Loader, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import moment from 'jalali-moment';
 import { PersianNumber } from 'react-persian';
@@ -51,7 +51,13 @@ class AdsItem extends Component {
               <div className="adsSingle__date"><PersianNumber>{moment(created_at, "YYYY-MM-DD h:m:s").fromNow()}</PersianNumber></div>
               <Button color="green" className="normal">تماس با فروشنده</Button>
               <Button color="yellow" className="normal">نشان کردن</Button>            
-              <Button color="blue" className="normal">اشتراک گذاری</Button>
+              <Dropdown text='اشتراک گذاری' icon='external share' floating labeled button className='icon blue'>
+              <Dropdown.Menu icon="filter">
+                <Dropdown.Item icon="telegram" text='تلگرام' />
+                <Dropdown.Item icon="facebook" text='فیسبوک' />
+                <Dropdown.Item icon="twitter" text='توییتر' />
+              </Dropdown.Menu>
+            </Dropdown>
               <ul className="adsSingle__property">
                 <li>دسته بندی <span>{category}</span> </li>            
                 <li>قیمت <span><PersianNumber>{price} تومان</PersianNumber></span></li>

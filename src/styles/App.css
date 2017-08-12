@@ -306,3 +306,9 @@ input, textarea {
   line-height: 2;
   font-size: 1.1rem;
   white-space: pre-wrap; }
+
+.adsSingle .dropdown .menu .item {
+  text-align: right !important; }
+
+.adsSingle .dropdown .menu .item i {
+  margin: 0 0 0 5px !important; }
