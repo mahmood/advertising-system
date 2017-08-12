@@ -34,6 +34,7 @@ class AdsItem extends Component {
       description,
       image,
       category,
+      telphone,
       created_at
     } = this.props.product;
     const { pathname } = this.props.location;
@@ -53,7 +54,7 @@ class AdsItem extends Component {
             <Grid.Column computer="7" mobile="16">
               <h2>{name}</h2>
               <div className="adsSingle__date"><PersianNumber>{moment(created_at, "YYYY-MM-DD h:m:s").fromNow()}</PersianNumber></div>
-              <Button color="green" className="normal">تماس با فروشنده</Button>
+              <a href={`tel:${telphone}`} className="ui button green normal">تماس با فروشنده</a>
               <Button color="yellow" className="normal">نشان کردن</Button>            
               <Dropdown text='اشتراک گذاری' icon='external share' floating labeled button className='icon blue'>
               <Dropdown.Menu icon="filter">

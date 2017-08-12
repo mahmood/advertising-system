@@ -54,7 +54,7 @@ export const register = (values) => {
           });
       })
       .catch(error => {
-        dispatch({ type: CREATE_USER_FAILED, error: 'اکانت ساخته نشد.' })
+        dispatch({ type: CREATE_USER_FAILED, error: 'مشکل در ایجاد اکانت دوباره تلاش کنید.' })
       })
     }
   };

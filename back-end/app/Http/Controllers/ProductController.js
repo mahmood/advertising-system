@@ -74,9 +74,11 @@ class ProductController {
     let ads = yield Database.table('products')
     .where('products.id', id)
     .innerJoin('categories', 'products.category', 'categories.id')
+    .innerJoin('users', 'products.user_id', 'users.id')
     .select('products.id',
      'products.name as name',
      'products.price',
+     'users.telphone',
      'products.price_type',
      'products.verified',
      'products.created_at',

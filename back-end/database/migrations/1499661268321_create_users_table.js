@@ -12,6 +12,7 @@ class UsersTableSchema extends Schema {
       table.string('lname', 100).notNullable()
       table.string('role', 10).notNullable().defaultTo('user');
       table.string('email', 254).notNullable().unique()
+      table.string('telphone', 15).notNullable()
       table.string('password', 60).notNullable()
       table.timestamps()
     })

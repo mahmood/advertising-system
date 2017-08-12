@@ -20,7 +20,7 @@ class UsersController {
   }
 
   * register(request, response) {
-    const data = request.only('username', 'password', 'fname', 'lname', 'email');
+    const data = request.only('username', 'password', 'fname', 'lname', 'email', 'telphone');
     yield User.create(data);
     response.json({ msg: 'کاربر با موقیت ساخته شد.' });
     return;

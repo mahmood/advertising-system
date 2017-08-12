@@ -35,8 +35,8 @@ class RegisterModal extends Component {
     super(props);
     this.onLoginFormSubmit = this.onLoginFormSubmit.bind(this);
   }
-  onLoginFormSubmit({email, fname, lname, password}) {
-    this.props.register({email, fname, lname, password});
+  onLoginFormSubmit({email, fname, lname, password, telphone}) {
+    this.props.register({email, fname, lname, password, telphone});
   }
   render() {
     const { 
@@ -73,6 +73,13 @@ class RegisterModal extends Component {
                   component={renderField} 
                   type="text"
                 />
+                <Field 
+                label="شماره تماس" 
+                name="telphone" 
+                placeholder="۰۹۱۲۱۷۴۹۰xx" 
+                component={renderField} 
+                type="tel"
+              />
                 <Field label="رمز عبور" name="password" component={renderField} type="password" />
                 <Button 
                   loading={isLoading} 
@@ -96,11 +103,12 @@ const validate = values => {
     fname: 'required|max:60',
     lname: 'required|max:90',
     email: 'required|email',
+    telphone: 'required|max:15',
     password: 'required|min:6'
   };
 
   const validator = new Validator(values, rules);
-  validator.setAttributeNames({ email: 'ایمیل', password: 'رمز عبور', fname: 'نام', lname: 'نام خانوادگی'});
+  validator.setAttributeNames({ email: 'ایمیل', telphone: 'شماره تماس', password: 'رمز عبور', fname: 'نام', lname: 'نام خانوادگی'});
   validator.passes();
   return validator.errors.all();
 };
