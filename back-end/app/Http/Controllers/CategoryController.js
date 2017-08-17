@@ -14,8 +14,9 @@ class CategoryController {
 
     yield Category.create(data);
 
-    response.json({ msg: 'Category Created Successfully'});
+    response.json({ msg: 'Category Created Successfully' });
   }
+
 
   * show (request, response) {
     const { id } = request.params();
@@ -29,7 +30,7 @@ class CategoryController {
   * destroy (request, response) {
     const { id } = request.params();
 
-    const cat = Category.findBy('id', id);
+    const cat = yield Category.findBy('id', id);
     yield cat.delete();
 
     response.json({ msg: 'Category Deleted Successfully' });

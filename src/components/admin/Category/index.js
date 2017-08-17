@@ -13,8 +13,10 @@ class Category extends Component {
   }
   render() {
     const {
-      cat
+      cat,
+      deleteCategory
     } = this.props;
+    console.log(this.props);
     return (
       <Layout>
         <Helmet>
@@ -36,6 +38,7 @@ class Category extends Component {
           <Table.Body>
           {cat && cat.map((cat, index) => 
             <CatsItem key={cat.id}
+              deleteCategory={deleteCategory}
               index={index}
               {...cat}
             />)}

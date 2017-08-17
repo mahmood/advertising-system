@@ -1,6 +1,7 @@
 import { 
   FETCH_ADMIN_CATS_SUCCESS,
-  ADD_CATEGORY_SUCCESS
+  ADD_CATEGORY_SUCCESS,
+  DELETE_ADMIN_CATS_SUCCESS
 } from './actionTypes.js';
 import axios from 'axios';
 import { push } from 'react-router-redux';
@@ -30,3 +31,15 @@ export const addCategory = values => {
       });
   };
 };
+
+export const deleteCategory = id => {
+  return dispatch => {
+    axios.delete(`${ROOT_URL}/category/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_ADMIN_CATS_SUCCESS, id });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+}

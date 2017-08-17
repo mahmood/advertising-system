@@ -19,6 +19,7 @@ const CatsItem = ({
   name,
   slug,
   created_at,
+  deleteCategory
 }) => {
   return (
     <Table.Row>
@@ -34,7 +35,7 @@ const CatsItem = ({
             <Icon name="trash" />
           </Button.Content>
         </Button>}
-          content={<Button color='green' content='آیا واقعا حذف شود؟' />}
+          content={<Button color='green' onClick={() => deleteCategory(id)} content='آیا واقعا حذف شود؟' />}
           on='click'
           position='top right'
         />
@@ -49,6 +50,7 @@ CatsItem.propTypes = {
   name: PropTypes.string,
   slug: PropTypes.string,
   created_at: PropTypes.string,
+  deleteCat: PropTypes.func
 };
 
 export default CatsItem;
