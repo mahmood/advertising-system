@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case FETCH_ADMIN_USERS_SUCCESS:
       return Object.assign({}, state, { data: action.data });
     case DELETE_ADMIN_USER_SUCCESS: 
-      let newState = state.date.filter(user => user.id !== action.id);
+      let newState = state.data.filter(user => user.id !== action.id);
       return Object.assign({}, state, { data: newState });
     default:
       return state;

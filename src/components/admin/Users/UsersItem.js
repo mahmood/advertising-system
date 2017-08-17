@@ -30,6 +30,7 @@ const UsersItem = ({
   telphone,
   role,
   created_at,
+  deleteUser
 }) => {
   return (
     <Table.Row>
@@ -47,7 +48,7 @@ const UsersItem = ({
             <Icon name="trash" />
           </Button.Content>
         </Button>}
-          content={<Button color='green' content='آیا واقعا حذف شود؟' />}
+          content={<Button color='green' onClick={() => deleteUser(id)} content='آیا واقعا حذف شود؟' />}
           on='click'
           position='top right'
         />

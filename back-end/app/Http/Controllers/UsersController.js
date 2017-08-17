@@ -41,12 +41,6 @@ class UsersController {
     return;
   }
 
-  * info (request, response) {
-    const data = {};
-    response.json({
-      ok: 'sd'
-    });
-  }
 
   * profile (request, response) {
     const user = yield request.auth.getUser()

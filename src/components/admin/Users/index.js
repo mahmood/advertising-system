@@ -3,7 +3,7 @@ import { Icon, Button, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import Layout from '../../layouts/Admin';
-import { fetchUsers } from '../../../actions/adminUsersActions';
+import { fetchUsers, deleteUser } from '../../../actions/adminUsersActions';
 import UsersItem from './UsersItem';
 import { connect } from 'react-redux';
 
@@ -13,7 +13,8 @@ class Users extends Component {
   }
   render() {
     const {
-      users
+      users,
+      deleteUser
     } = this.props;
     return (
       <Layout>
@@ -38,6 +39,7 @@ class Users extends Component {
           <Table.Body>
           {users && users.map((user, index) => 
             <UsersItem key={user.id}
+              deleteUser={deleteUser}
               index={index}
               {...user}
             />)}
@@ -54,4 +56,4 @@ const mapStateToProps = (state, ownProps) => {
     users: state.users.data
   }
 }
-export default connect(mapStateToProps, { fetchUsers })(Users);
+export default connect(mapStateToProps, { fetchUsers, deleteUser })(Users);

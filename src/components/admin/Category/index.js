@@ -16,7 +16,6 @@ class Category extends Component {
       cat,
       deleteCategory
     } = this.props;
-    console.log(this.props);
     return (
       <Layout>
         <Helmet>

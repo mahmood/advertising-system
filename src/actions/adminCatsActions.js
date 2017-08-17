@@ -41,5 +41,5 @@ export const deleteCategory = id => {
       .catch(error => {
         console.log(error);
       });
-  }
-}
+  };
+};
