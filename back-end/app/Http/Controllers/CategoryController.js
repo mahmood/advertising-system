@@ -14,7 +14,7 @@ class CategoryController {
 
     yield Category.create(data);
 
-    res.json({ msg: 'Category Created Successfully'});
+    response.json({ msg: 'Category Created Successfully'});
   }
 
   * show (request, response) {

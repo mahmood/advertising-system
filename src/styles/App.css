@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "IRANYekanWeb";
+  font-family: "IRANSansWeb";
   background: #fff; }
 
 .rtl {
@@ -11,10 +11,10 @@ body {
   margin-top: 20px; }
 
 a, div, .button {
-  font-family: "IRANYekanWeb" !important; }
+  font-family: "IRANSansWeb" !important; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "IRANYekanWeb"; }
+  font-family: "IRANSansWeb"; }
 
 a {
   color: white; }
@@ -134,7 +134,7 @@ a {
   margin-top: 2rem; }
 
 input, textarea {
-  font-family: "IRANYekanWeb" !important; }
+  font-family: "IRANSansWeb" !important; }
 
 .search {
   background: #fbfbfb;

@@ -18,6 +18,7 @@ export const signIn = (values) => {
         const cookies = new Cookies();
         cookies.set('jwt', response.data.token, { path: '/' });
         cookies.set('data', response.data.user, { path: '/' });
+        localStorage.setItem('token', response.data.token);
       })
       .catch(error => {
         dispatch({ type: AUTH_USER, loggedIn: false, isLoading: false, data: null, error: error.response.data.msg });
@@ -32,6 +33,7 @@ export const logOut = () => {
     const cookies = new Cookies();
     cookies.remove('jwt');
     cookies.remove('data');
+    localStorage.removeItem('token');
   }
 };
 
@@ -48,6 +50,7 @@ export const register = (values) => {
             const cookies = new Cookies();
             cookies.set('jwt', response.data.token, { path: '/' });
             cookies.set('data', response.data.user, { path: '/' });
+            localStorage.setItem('token', response.data.token);        
           })
           .catch(error => {
             dispatch({ type: AUTH_USER, loggedIn: false, data: null, error: error.response.data.msg });

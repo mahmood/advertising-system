@@ -11,6 +11,7 @@ import Admin from './components/admin';
 import Ads from './components/admin/Ads'
 import AddAds from './components/admin/Ads/AddAds';
 import Category from './components/admin/Category';
+import AddCategory from './components/admin/Category/AddCategory';
 import Users from './components/admin/Users';
 import AdsSingle from './components/single/AdsItem.js';
 import Authentication from './components/Authentication';
@@ -39,6 +40,7 @@ const App = () => (
     <Route exact path="/admin/ads" component={Authentication(Ads, 'admin')} />
     <Route exact path="/admin/ads/add" component={Authentication(AddAds, 'admin')} />
     <Route exact path="/admin/category" component={Authentication(Category, 'admin')} />
+    <Route exact path="/admin/category/add" component={Authentication(AddCategory, 'admin')} />
     <Route exact paht="/admin/users" component={Authentication(Users, 'admin')} />
     <Route component={NotFound} />
   </Switch>
