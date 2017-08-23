@@ -87,6 +87,28 @@ class ProductController {
      'products.description')
     response.json(ads);
   }
+
+  * info (request, response) {
+    // Fetch information
+    const productCountQuery = yield Database.from('products').count('id as totalProducts');
+    const approvedProductsQuery = yield Database.from('products').where('verified', 1).count('id as approvedProducts');
+    const notApprovedProductsQuery = yield Database.from('products').where('verified', 0).count('id as notApprovedProducts');
+    const totalUsersQuery = yield Database.from('users').count('id as totalUsers');
+    // Process Data to readable format
+    const allProducts = productCountQuery.map(product => product.totalProducts);
+    const approvedProducts = approvedProductsQuery.map(product => product.approvedProducts);
+    const notApprovedProducts = notApprovedProductsQuery.map(product => product.notApprovedProducts);
+    const totalUsers = totalUsersQuery.map(users => users.totalUsers);
+    // Return Response as json
+    response.json(
+      {
+        allProducts: allProducts[0], 
+        approvedProducts: approvedProducts[0],
+        notApprovedProducts: notApprovedProducts[0],
+        totalUsers: totalUsers[0]
+      }
+    );
+  }
 }
 
 module.exports = ProductController
