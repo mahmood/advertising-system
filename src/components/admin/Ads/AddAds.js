@@ -36,7 +36,7 @@ class AddAds extends Component {
         <Helmet>
           <title>پنل مدیریت - افزودن آگهی</title>
         </Helmet>
-        <section className="product__inner">
+        <section className="product__inner adminAddAds">
           <h2><Icon name="computer" size="small"></Icon> افزودن آگهی</h2>
           <form encType='multipart/form-data' className="form ui addAdvForm" onSubmit={handleSubmit(this.onFormSubmit)}>
             <label htmlFor="name">عنوان</label>
