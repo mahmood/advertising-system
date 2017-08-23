@@ -20,7 +20,7 @@ class AddAds extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
   componentDidMount() {
-    axios.get(apiEndPoint)
+    axios.get(apiEndPoint+"/category")
     .then(response => {
       this.setState({ cat: response.data.data });
     });

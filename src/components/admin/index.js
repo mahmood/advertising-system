@@ -14,7 +14,7 @@ class Admin extends Component {
     }
   }
   componentDidMount() {
-    axios.get(apiEndPoint)
+    axios.get(apiEndPoint+'/info')
     .then(response => {
       this.setState({ info: response.data });
     }).catch(error => {
