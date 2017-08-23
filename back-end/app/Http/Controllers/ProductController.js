@@ -100,14 +100,41 @@ class ProductController {
     const notApprovedProducts = notApprovedProductsQuery.map(product => product.notApprovedProducts);
     const totalUsers = totalUsersQuery.map(users => users.totalUsers);
     // Return Response as json
-    response.json(
+    // response.json(
+    //   {
+    //     allProducts: allProducts[0], 
+    //     approvedProducts: approvedProducts[0],
+    //     notApprovedProducts: notApprovedProducts[0],
+    //     totalUsers: totalUsers[0]
+    //   }
+    // ); 
+  
+    response.json([
       {
-        allProducts: allProducts[0], 
-        approvedProducts: approvedProducts[0],
-        notApprovedProducts: notApprovedProducts[0],
-        totalUsers: totalUsers[0]
+        id: 1,
+        title: 'تعداد کل آگهی ها',        
+        count: allProducts[0], 
+        color: 'blue'
+      },
+      {
+        id: 2,
+        title: 'آگهی های تایید شده',        
+        count: approvedProducts[0], 
+        color: 'green'
+      },
+      {
+        id: 3,
+        title: 'تعداد آگهی های منتظر تایید',        
+        count: notApprovedProducts[0], 
+        color: 'yellow'
+      },
+      {
+        id: 4,
+        title: 'تعداد کاربران',        
+        count: totalUsers[0], 
+        color: 'red'
       }
-    );
+    ]);
   }
 }
 
