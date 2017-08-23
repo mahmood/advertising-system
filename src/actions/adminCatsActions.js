@@ -5,12 +5,12 @@ import {
 } from './actionTypes.js';
 import axios from 'axios';
 import { push } from 'react-router-redux';
+import { apiEndPoint } from '../../config.js';
 
-const ROOT_URL = 'http://localhost:3333/api/v1';
 
 export const fetchCategories = () => {
   return dispatch => {
-    axios.get(`${ROOT_URL}/category`)
+    axios.get(`${apiEndPoint}/category`)
       .then(response => {
         dispatch({ type: FETCH_ADMIN_CATS_SUCCESS, data: response.data });
       })
@@ -22,7 +22,7 @@ export const fetchCategories = () => {
 
 export const addCategory = values => {
   return dispatch => {
-    axios.post(`${ROOT_URL}/category`, values, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+    axios.post(`${apiEndPoint}/category`, values, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(response => {
         dispatch(push('/admin/category'));
       })
@@ -34,7 +34,7 @@ export const addCategory = values => {
 
 export const deleteCategory = id => {
   return dispatch => {
-    axios.delete(`${ROOT_URL}/category/${id}`)
+    axios.delete(`${apiEndPoint}/category/${id}`)
       .then(response => {
         dispatch({ type: DELETE_ADMIN_CATS_SUCCESS, id });
       })

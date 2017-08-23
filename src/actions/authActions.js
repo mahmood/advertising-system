@@ -6,13 +6,13 @@ import {
 } from './actionTypes';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { apiEndPoint } from '../../config.js';
 
-const ROOT_URL = 'http://localhost:3333/api/v1';
 
 export const signIn = (values) => {
   return dispatch => {
     dispatch({ type: AUTH_USER, loggedIn: false, isLoading: true, data: null, error: null });
-    axios.post(`${ROOT_URL}/login`, values)
+    axios.post(`${apiEndPoint}/login`, values)
       .then(response => {
         dispatch({ type: AUTH_USER, loggedIn: true, isLoading: false, data: response.data.user, error: null });
         const cookies = new Cookies();
@@ -41,10 +41,10 @@ export const register = (values) => {
   return dispatch => {
     values = Object.assign({}, values, { username: values.email });
     dispatch({ type: CREATE_USER_SUCCESS, isLoading: true });
-    axios.post(`${ROOT_URL}/register`, values)
+    axios.post(`${apiEndPoint}/register`, values)
       .then(response => {
         dispatch({ type: CREATE_USER_SUCCESS, isLoading: false });
-        axios.post(`${ROOT_URL}/login`, values)
+        axios.post(`${apiEndPoint}/login`, values)
           .then(response => {
             dispatch({ type: AUTH_USER, loggedIn: true, data: response.data.user, error: null });
             const cookies = new Cookies();

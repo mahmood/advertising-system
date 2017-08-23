@@ -3,6 +3,7 @@ import Layout from '../layouts/Admin';
 import { Card } from 'semantic-ui-react';
 import Helmet from 'react-helmet';
 import axios from 'axios';
+import { apiEndPoint } from '../../../config.js';
 
 class Admin extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Admin extends Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:3333/api/v1/info')
+    axios.get(apiEndPoint)
     .then(response => {
       this.setState({ info: response.data });
     }).catch(error => {

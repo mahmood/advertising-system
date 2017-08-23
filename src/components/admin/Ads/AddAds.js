@@ -9,6 +9,7 @@ import { renderField, renderTextarea, renderDropzoneInput } from '../../AddAdver
 import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
 import Validator from 'validatorjs';
+import { apiEndPoint } from '../../../../config.js';
 
 class AddAds extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class AddAds extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
   componentDidMount() {
-    axios.get(`http://localhost:3333/api/v1/category`)
+    axios.get(apiEndPoint)
     .then(response => {
       this.setState({ cat: response.data.data });
     });

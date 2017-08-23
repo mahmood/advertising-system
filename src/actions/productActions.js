@@ -9,8 +9,8 @@ import {
 } from './actionTypes';
 import axios from 'axios';
 import { push } from 'react-router-redux';
+import { apiEndPoint } from '../../config.js';
 
-const ROOT_URL = 'http://localhost:3333/api/v1';
 
 export const addProduct = data => {
   const newData = new FormData();
@@ -22,7 +22,7 @@ export const addProduct = data => {
   newData.append('description', data.description);
 
   return dispatch => {
-    axios.post(`${ROOT_URL}/product`, newData, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+    axios.post(`${apiEndPoint}/product`, newData, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(response => {
         dispatch(push('/'));
       })
@@ -34,7 +34,7 @@ export const addProduct = data => {
 
 export const fetchCategories = () => {
   return dispatch => {
-    axios.get(`${ROOT_URL}/category`)
+    axios.get(`${apiEndPoint}/category`)
     .then(response => {
       dispatch({ type: FETCH_CATEGORIES_SUCCESS, cat: response.data.data });
     })
@@ -45,7 +45,7 @@ export const fetchProducts = (catId = null) => {
   return dispatch => {
     dispatch({ type: FETCH_PRODUCT_SUCCESS, term: null, isLoading: true });
     if(catId !== null){
-      axios.get(`${ROOT_URL}/category/${catId}`)
+      axios.get(`${apiEndPoint}/category/${catId}`)
       .then(response => {
         dispatch({ type: FETCH_PRODUCT_SUCCESS, term:null, isLoading: false, data: response.data.products, currentCat: response.data.currentCat });
       })
@@ -53,7 +53,7 @@ export const fetchProducts = (catId = null) => {
         dispatch({ type: FETCH_PRODUCT_FAILED, term:null, isLoading: false, error: error.response.msg });
       });
     }else {
-      axios.get(`${ROOT_URL}/product`)
+      axios.get(`${apiEndPoint}/product`)
         .then(response => {
           dispatch({ type: FETCH_PRODUCT_SUCCESS,term: null, isLoading: false, data: response.data });
         })
@@ -66,7 +66,7 @@ export const fetchProducts = (catId = null) => {
 
 export const searchProduct = term => {
   return dispatch => {
-    axios.get(`${ROOT_URL}/product/search?term=${term}`)
+    axios.get(`${apiEndPoint}/product/search?term=${term}`)
       .then(response => {
         dispatch({ type: SEARCH, data: response.data, term });
       })
@@ -80,7 +80,7 @@ export const searchProduct = term => {
 export const FetchSingleProduct = id => {
   return dispatch => {
     dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, isLoading: true });
-    axios.get(`${ROOT_URL}/product/${id}`)
+    axios.get(`${apiEndPoint}/product/${id}`)
       .then(response => {
         dispatch({ type: FETCH_SINGLE_PRODUCT_SUCCESS, isLoading: false, data: response.data });
       })

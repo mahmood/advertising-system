@@ -4,14 +4,13 @@ import {
   DELETE_ADMIN_PRODUCT_SUCCESS,
   VERIFY_ADMIN_PRODUCT_SUCCESS
 } from './actionTypes';
+import { apiEndPoint } from '../../config.js';
 import axios from 'axios';
 import { push } from 'react-router-redux';
 
-const ROOT_URL = 'http://localhost:3333/api/v1';
-
 export const fetchProducts = () => {
   return dispatch => {
-    axios.get(`${ROOT_URL}/product`)
+    axios.get(`${apiEndPoint}/product`)
     .then(response => {
       dispatch({ type: FETCH_ADMIN_ADS_SUCCESS, data: response.data });
     }).catch(error => {
@@ -22,7 +21,7 @@ export const fetchProducts = () => {
 
 export const deleteProduct = id => {
   return dispatch => {
-    axios.delete(`${ROOT_URL}/product/${id}`)
+    axios.delete(`${apiEndPoint}/product/${id}`)
     .then(response => {
       dispatch({ type: DELETE_ADMIN_PRODUCT_SUCCESS, id });
     })
@@ -31,7 +30,7 @@ export const deleteProduct = id => {
 
 export const verifyProduct = id => {
   return dispatch => {
-    axios.post(`${ROOT_URL}/product/${id}/verify`)
+    axios.post(`${apiEndPoint}/product/${id}/verify`)
       .then(response => {
         dispatch({ type: VERIFY_ADMIN_PRODUCT_SUCCESS, id });
       })
@@ -40,7 +39,6 @@ export const verifyProduct = id => {
 
 export const addProduct = data => {
   const newData = new FormData();
-  console.log(data.photo);
   data.photo.map((image, i) => newData.append('photo', data.photo[i]));
   newData.append('name', data.name);
   newData.append('category', data.category);
@@ -49,7 +47,7 @@ export const addProduct = data => {
   newData.append('description', data.description);
 
   return dispatch => {
-    axios.post(`${ROOT_URL}/product`, newData, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+    axios.post(`${apiEndPoint}/product`, newData, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(response => {
         dispatch(push('/admin/ads'));
       }).catch(error => {
