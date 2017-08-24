@@ -22,6 +22,22 @@ class ProductController {
     response.json(products);
   }
 
+  * verified (request, response) {
+    const products = yield Database.table('products')
+    .innerJoin('categories', 'products.category', 'categories.id')
+    .where('products.verified', 1)    
+    .select('products.id',
+     'products.name as name',
+     'products.description',
+     'products.price',
+     'products.price_type',
+     'products.verified',
+     'products.created_at',
+     'products.image',
+     'categories.name as category')
+    response.json(products);
+  }
+
   * destroy (request, response) {
     const { id } = request.params('id');
     const ads = yield Product.findBy('id', id);
@@ -56,7 +72,7 @@ class ProductController {
   * search (request, response) {
     const term = request.input('term');
 
-    const products = yield Product.query().where('name', 'LIKE', `%${term}%`);
+    const products = yield Product.query().where('name', 'LIKE', `%${term}%`).where('verified', '1');
     response.json(products);
   }
 
@@ -100,15 +116,6 @@ class ProductController {
     const notApprovedProducts = notApprovedProductsQuery.map(product => product.notApprovedProducts);
     const totalUsers = totalUsersQuery.map(users => users.totalUsers);
     // Return Response as json
-    // response.json(
-    //   {
-    //     allProducts: allProducts[0], 
-    //     approvedProducts: approvedProducts[0],
-    //     notApprovedProducts: notApprovedProducts[0],
-    //     totalUsers: totalUsers[0]
-    //   }
-    // ); 
-  
     response.json([
       {
         id: 1,

@@ -53,7 +53,7 @@ export const fetchProducts = (catId = null) => {
         dispatch({ type: FETCH_PRODUCT_FAILED, term:null, isLoading: false, error: error.response.msg });
       });
     }else {
-      axios.get(`${apiEndPoint}/product`)
+      axios.get(`${apiEndPoint}/product/verified`)
         .then(response => {
           dispatch({ type: FETCH_PRODUCT_SUCCESS,term: null, isLoading: false, data: response.data });
         })

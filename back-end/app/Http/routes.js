@@ -5,9 +5,10 @@ Route.group('version1', () => {
   Route.get('profile', 'UsersController.profile');
   Route.post('login', 'UsersController.login');
   Route.post('register', 'UsersController.register');
+  Route.get('product/verified', 'ProductController.verified');  
   Route.get('product/search', 'ProductController.search');
   Route.resource('product', 'ProductController');
-  Route.post('product/:id/verify', 'ProductController.verifyProduct')
+  Route.post('product/:id/verify', 'ProductController.verifyProduct');
   Route.resource('category', 'CategoryController');
   Route.resource('users', 'UsersController');
 }).prefix('api/v1');

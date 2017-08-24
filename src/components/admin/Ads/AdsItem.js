@@ -45,7 +45,7 @@ const AdsItem = ({
       <Table.Cell>{name}</Table.Cell>
       <Table.Cell>تایید شده</Table.Cell>
       <Table.Cell>{renderPriceType(price_type)}</Table.Cell>
-      <Table.Cell><PersianNumberWords>{price.toString()}</PersianNumberWords> تومان</Table.Cell>
+      <Table.Cell><PersianNumberWords>{price}</PersianNumberWords> تومان</Table.Cell>
       <Table.Cell>{moment(created_at, "YYYY-MM-DD h:m:s").format("jD jMMMM jYYYY")}</Table.Cell>
       <Table.Cell>{category}</Table.Cell>
       <Table.Cell>{description.slice(0, 200)}</Table.Cell>
@@ -82,7 +82,7 @@ AdsItem.propTypes = {
   index: PropTypes.number,
   name: PropTypes.string,
   price_type: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   created_at: PropTypes.string,
   category: PropTypes.string,
   description: PropTypes.string,

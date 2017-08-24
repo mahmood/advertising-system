@@ -21,7 +21,7 @@ class CategoryController {
   * show (request, response) {
     const { id } = request.params();
 
-    const products = yield Product.query().where('category', id).fetch();
+    const products = yield Product.query().where('category', id).where('verified', 1).fetch();
     const currentCat = yield Category.query().where('id', id).select('id', 'name', 'slug').fetch();
 
     response.json({ products, currentCat });
