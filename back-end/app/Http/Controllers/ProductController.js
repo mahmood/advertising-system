@@ -1,13 +1,13 @@
 'use strict'
 
-const Helpers = use('Helpers')
-const Product = use('App/Model/Product')
+const Helpers  = use('Helpers')
+const Product  = use('App/Model/Product')
 const Database = use('Database')
+const moment   = require('jalali-moment');
 
 class ProductController {
 
   * index (request, response) {
-    // const products = yield Product.all();
     const products = yield Database.table('products')
     .innerJoin('categories', 'products.category', 'categories.id')
     .select('products.id',
@@ -19,13 +19,20 @@ class ProductController {
      'products.created_at',
      'products.image',
      'categories.name as category')
+    //  let ProductWithformatedDate = products.map(item => {
+    //    return {
+    //        ...item,
+    //        formatedDate: moment(item.created_at, "YYYY-MM-DD h:m:s").format("jD jMMMM jYYYY")
+    //      }
+    //  });
+    //  console.log(ProductWithformatedDate);
     response.json(products);
   }
 
   * verified (request, response) {
     const products = yield Database.table('products')
     .innerJoin('categories', 'products.category', 'categories.id')
-    .where('products.verified', 1)    
+    .where('products.verified', 1)
     .select('products.id',
      'products.name as name',
      'products.description',
@@ -119,26 +126,26 @@ class ProductController {
     response.json([
       {
         id: 1,
-        title: 'تعداد کل آگهی ها',        
-        count: allProducts[0], 
+        title: 'تعداد کل آگهی ها',
+        count: allProducts[0],
         color: 'blue'
       },
       {
         id: 2,
-        title: 'آگهی های تایید شده',        
-        count: approvedProducts[0], 
+        title: 'آگهی های تایید شده',
+        count: approvedProducts[0],
         color: 'green'
       },
       {
         id: 3,
-        title: 'تعداد آگهی های منتظر تایید',        
-        count: notApprovedProducts[0], 
+        title: 'تعداد آگهی های منتظر تایید',
+        count: notApprovedProducts[0],
         color: 'yellow'
       },
       {
         id: 4,
-        title: 'تعداد کاربران',        
-        count: totalUsers[0], 
+        title: 'تعداد کاربران',
+        count: totalUsers[0],
         color: 'red'
       }
     ]);

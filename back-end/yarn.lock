@@ -1991,6 +1991,12 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
+jalali-moment@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/jalali-moment/-/jalali-moment-2.1.5.tgz#c57a950315c42df39f0ca431291e2775ec39e1e9"
+  dependencies:
+    moment "^2.18.1"
+
 jmespath@0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"

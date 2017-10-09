@@ -5,7 +5,7 @@ import Async from 'react-code-splitting';
 import NotFound from './components/common/NotFound';
 import Home from './components/home/Home'
 import AddAdvertising from './components/AddAdvertising';
-import Browse from './components/‌‌Browse/Browse';
+import Browse from './components/Browse/Browse';
 import About from './components/About';
 import Admin from './components/admin';
 import Ads from './components/admin/Ads'

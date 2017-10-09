@@ -16,7 +16,7 @@
     "axios": "^0.16.2",
     "google-map-react": "^0.24.0",
     "history": "^4.6.3",
-    "jalali-moment": "^2.0.2",
+    "jalali-moment": "^2.1.5",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
