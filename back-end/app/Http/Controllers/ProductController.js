@@ -3,30 +3,25 @@
 const Helpers  = use('Helpers')
 const Product  = use('App/Model/Product')
 const Database = use('Database')
-const moment   = require('jalali-moment');
+const moment   = require('moment');
 
 class ProductController {
 
   * index (request, response) {
     const products = yield Database.table('products')
-    .innerJoin('categories', 'products.category', 'categories.id')
-    .select('products.id',
-     'products.name as name',
-     'products.description',
-     'products.price',
-     'products.price_type',
-     'products.verified',
-     'products.created_at',
-     'products.image',
-     'categories.name as category')
-    //  let ProductWithformatedDate = products.map(item => {
-    //    return {
-    //        ...item,
-    //        formatedDate: moment(item.created_at, "YYYY-MM-DD h:m:s").format("jD jMMMM jYYYY")
-    //      }
-    //  });
-    //  console.log(ProductWithformatedDate);
-    response.json(products);
+      .innerJoin('categories', 'products.category', 'categories.id')
+      .innerJoin('users', 'products.user_id', 'users.id')
+      .select('products.id',
+       'products.name as name',
+       'products.description',
+       'products.price',
+       'products.price_type',
+       'users.telphone',
+       'products.verified',
+       'products.created_at',
+       'products.image',
+       'categories.name as category');
+    response.json(products)
   }
 
   * verified (request, response) {
@@ -41,8 +36,8 @@ class ProductController {
      'products.verified',
      'products.created_at',
      'products.image',
-     'categories.name as category')
-    response.json(products);
+     'categories.name as category');
+    response.json(products)
   }
 
   * destroy (request, response) {
@@ -67,9 +62,9 @@ class ProductController {
 
     data = Object.assign({}, data, { user_id: user.id, image: images.uploadName() });
 
-    if(!images.moved()) {
+    if (!images.moved()) {
       response.json(images.errors());
-      return;
+      return
     }
 
     yield Product.create(data);

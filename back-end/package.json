@@ -24,6 +24,7 @@
     "adonis-storage": "^0.0.4",
     "adonis-websocket": "^1.0.3",
     "jalali-moment": "^2.1.5",
+    "moment-jalaali": "^0.7.2",
     "mysql": "^2.13.0",
     "youch": "^2.0.4"
   },
